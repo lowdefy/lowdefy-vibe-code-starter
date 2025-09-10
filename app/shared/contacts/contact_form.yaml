@@ -1,0 +1,34 @@
+id: contact_form
+type: Box
+layout:
+  contentGutter: 8
+blocks:
+  - id: contact.company_id
+    type: Selector
+    required: true
+    properties:
+      title: Contact Company
+      options:
+        _request: companies_selector
+  - id: contact.name
+    type: TextInput
+    required: true
+    properties:
+      title: Name
+  - id: contact.surname
+    type: TextInput
+    properties:
+      title: Surname
+  - id: contact.email
+    type: TextInput
+    required: true
+    properties:
+      title: Email
+  - id: contact.contact_number
+    type: TextInput
+    properties:
+      title: Contact Number
+  - id: contact.mobile_number
+    type: TextInput
+    properties:
+      title: Mobile Number

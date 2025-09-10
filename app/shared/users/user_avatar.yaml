@@ -1,0 +1,42 @@
+id: user_profile_link
+type: Box
+layout:
+  flex: 0 1 auto
+  contentGutter: 8
+  contentAlign: middle
+events:
+  onClick:
+    - id: link_to_profile
+      type: Link
+      params:
+        pageId: profile
+blocks:
+  - id: user_name
+    type: Html
+    layout:
+      flex: 0 1 auto
+    visible:
+      _gt:
+        - _media: width
+        - 992
+    properties:
+      html:
+        _user: profile.name
+  - id: user_avatar
+    type: Avatar
+    layout:
+      flex: 0 1 auto
+    properties:
+      size: large
+      src:
+        _if_none:
+          - _user: profile.picture
+          - _string.concat:
+              - https://api.dicebear.com/6.x/initials/svg?backgroundType=gradientLinear&scale=75&seed=
+              - _if_none:
+                  - _user: profile.name
+                  - ''
+      alt:
+        _string.concat:
+          - 'User avatar for '
+          - _user: profile.name

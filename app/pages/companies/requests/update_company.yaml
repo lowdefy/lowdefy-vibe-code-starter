@@ -1,0 +1,32 @@
+# @cascade: MongoDB Request - Company Update
+# AI Context: Update operation with aggregation pipeline and change tracking
+# MCP Integration: Validate MongoDBUpdateOne request schema and update operations
+# Patterns: Aggregation pipeline updates, change stamp tracking, field validation
+# Dependencies: connections.yaml companies collection, shared/change_stamp.yaml
+
+id: update_company
+type: MongoDBUpdateOne
+connectionId: companies
+payload:
+  company:
+    _state: company
+properties:
+  filter:
+    _id:
+      _payload: company._id
+  update:
+    - $addFields:
+        updated:
+          $concatArrays:
+            - - _ref: shared/change_stamp.yaml
+            - $ifNull:
+                - $updated
+                - []
+    - $set:
+        name:
+          _payload: company.name
+        description:
+          _payload: company.description
+        color:
+          _payload: company.color
+        updated: $updated

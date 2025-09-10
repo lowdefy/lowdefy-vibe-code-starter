@@ -1,0 +1,39 @@
+# @cascade: MongoDB Request - Users List Retrieval
+# AI Context: Retrieve all users with role and profile information for admin interface
+# MCP Integration: Validate MongoDBAggregation request schema and projection operations
+# Patterns: User list aggregation, role projection, status calculation, field mapping
+# Dependencies: connections.yaml users collection, role system, user administration
+
+id: get_users
+type: MongoDBAggregation
+connectionId: user_contacts
+properties:
+  pipeline:
+    - $project:
+        email: 1
+        image: 1
+        profile: 1
+        app_attributes: $apps.lowdefy-vibe-code-starter.app_attributes
+        roles: $apps.lowdefy-vibe-code-starter.roles
+        active:
+          $cond:
+            - $disabled
+            - ⛔️
+            - ✅
+        created_at:
+          $dateToString:
+            date: $created.timestamp
+            format: '%Y/%m/%d'
+        updated_at:
+          $dateToString:
+            date: $updated.timestamp
+            format: '%Y/%m/%d'
+        signed_up:
+          $cond:
+            - $eq:
+                - $type: $apps.lowdefy-vibe-code-starter.sign_up
+                - date
+            - ✅
+            - ⛔️
+    - $sort:
+        email: 1

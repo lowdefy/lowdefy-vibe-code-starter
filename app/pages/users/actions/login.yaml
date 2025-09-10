@@ -1,0 +1,24 @@
+# @cascade: Lowdefy Action - User Login
+# AI Context: Authentication action with NextAuth integration
+# MCP Integration: Validate action schema and authentication flow
+# Patterns: Authentication actions, redirect handling, error management
+# Dependencies: NextAuth configuration, authentication providers
+
+- id: set_login_button_disabled
+  type: SetState
+  params:
+    login_button_disabled: true
+- id: validate
+  type: Validate
+- id: login
+  type: Login
+  params:
+    providerId: email
+    email:
+      _state: email
+    callbackUrl:
+      pageId: router
+- id: set_login_button_enabled
+  type: SetState
+  params:
+    login_button_disabled: false

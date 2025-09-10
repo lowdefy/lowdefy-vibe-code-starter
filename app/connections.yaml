@@ -1,0 +1,66 @@
+# @cascade: MongoDB Connections - Database Configuration
+# AI Context: Include changeLog for audit trails, consistent naming patterns
+# MCP Integration: MongoDBCollection schema validation via MCP server
+# Patterns: collection + databaseUri + write permissions + changeLog metadata
+# Dependencies: Environment MONGODB_URI secret, log-changes collection
+
+- id: companies
+  type: MongoDBCollection
+  properties:
+    collection: companies
+    databaseUri:
+      _secret: MONGODB_URI
+    write: true
+    changeLog:
+      collection: log-changes
+      meta:
+        user:
+          _user: true
+- id: contacts
+  type: MongoDBCollection
+  properties:
+    collection: contacts
+    databaseUri:
+      _secret: MONGODB_URI
+    write: true
+    changeLog:
+      collection: log-changes
+      meta:
+        user:
+          _user: true
+- id: log-usage
+  type: MongoDBCollection
+  properties:
+    collection: log-usage
+    databaseUri:
+      _secret: MONGODB_URI
+    write: true
+- id: user_contacts
+  type: MongoDBCollection
+  properties:
+    collection: user_contacts
+    databaseUri:
+      _secret: MONGODB_URI
+    write: true
+    changeLog:
+      collection: log-changes
+      meta:
+        user:
+          _user: true
+- id: events
+  type: MongoDBCollection
+  properties:
+    collection: log-events
+    changeLog:
+      collection: log-changes
+      meta:
+        user:
+          _user: true
+    databaseUri:
+      _secret: MONGODB_URI
+    write: true
+- id: hello_world_api
+  type: HelloWorldAPI
+  properties:
+    databaseUri:
+      _secret: MONGODB_URI

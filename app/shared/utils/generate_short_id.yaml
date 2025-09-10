@@ -1,0 +1,7 @@
+_js: |
+  let result = "";
+  for (let i = 0; i < 4; i++) {
+    const randomByte = Math.floor(Math.random() * 256);
+    result += randomByte.toString(16).padStart(2, "0");
+  }
+  return result;

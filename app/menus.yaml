@@ -1,0 +1,37 @@
+# @cascade: Lowdefy Menu Configuration - Navigation Structure
+# AI Context: Define menu hierarchy with MenuLink and MenuGroup components
+# MCP Integration: Validate menu structure and navigation component schemas
+# Patterns: Hierarchical navigation, consistent icons, logical grouping
+# Dependencies: Must reference valid pageId values from pages.yaml
+
+- id: default
+  links:
+    - id: companies
+      type: MenuLink
+      properties:
+        title: Companies
+        icon: BsBuilding
+      pageId: companies
+    - id: contacts
+      type: MenuLink
+      properties:
+        title: Contacts
+        icon: AiOutlineContacts
+      pageId: contacts
+    - id: development
+      type: MenuLink
+      properties:
+        title: Development
+        icon: AiOutlineTool
+      pageId: development
+    - id: admin
+      type: MenuGroup
+      properties:
+        title: Admin
+      links:
+        - id: users
+          type: MenuLink
+          properties:
+            title: Users
+            icon: AiOutlineTeam
+          pageId: users

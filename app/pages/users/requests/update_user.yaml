@@ -1,0 +1,52 @@
+# @cascade: MongoDB Request - User Administration Update
+# AI Context: Admin update of user details, roles, and status
+# MCP Integration: Validate MongoDBUpdateOne request schema and admin operations
+# Patterns: Admin user updates, role assignment, status management, field validation
+# Dependencies: connections.yaml users collection, role system, admin permissions
+
+id: update_user
+type: MongoDBUpdateOne
+connectionId: user_contacts
+payload:
+  user:
+    _state: user
+  name:
+    _string.trim:
+      _string.concat:
+        - _string.trim:
+            _if_none:
+              - _state: user.profile.given_name
+              - ''
+        - ' '
+        - _string.trim:
+            _if_none:
+              - _state: user.profile.family_name
+              - ''
+properties:
+  filter:
+    _id:
+      _payload: user._id
+  update:
+    $set:
+      disabled:
+        _payload: user.disabled
+      apps.lowdefy-vibe-code-starter.roles:
+        _payload: user.roles
+      profile.given_name:
+        _string.trim:
+          _if_none:
+            - _payload: user.profile.given_name
+            - ''
+      profile.family_name:
+        _string.trim:
+          _if_none:
+            - _payload: user.profile.family_name
+            - ''
+      profile.name:
+        _payload: name
+      profile.color:
+        _payload: user.profile.color
+      global_attributes.github.username:
+        _payload: user.gh_username
+      updated:
+        _ref: shared/change_stamp.yaml

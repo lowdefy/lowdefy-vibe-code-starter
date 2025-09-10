@@ -1,0 +1,24 @@
+# @cascade: MongoDB Request - Company Creation
+# AI Context: Insert operation with UUID generation and change stamp
+# MCP Integration: Validate MongoDBInsertOne request schema and payload structure
+# Patterns: UUID generation, change stamp, consistent field mapping
+# Dependencies: connections.yaml companies collection, shared/change_stamp.yaml
+
+id: add_company
+type: MongoDBInsertOne
+connectionId: companies
+payload:
+  company:
+    _state: company
+properties:
+  doc:
+    _id:
+      _uuid: true
+    created:
+      _ref: shared/change_stamp.yaml
+    name:
+      _payload: company.name
+    description:
+      _payload: company.description
+    color:
+      _payload: company.color

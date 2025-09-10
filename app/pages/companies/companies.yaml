@@ -1,0 +1,145 @@
+# @cascade: Lowdefy Page - Companies Management Interface
+# AI Context: Use AgGrid for data display, Card layouts for forms, responsive design
+# MCP Integration: Validate PageHeaderMenu, AgGrid, and form block schemas
+# Patterns: PageHeaderMenu > Content > AgGrid + form sections, CRUD operations
+# Dependencies: requests/get_companies.yaml, requests/add_company.yaml, connections.yaml
+
+id: companies
+type: PageHeaderMenu
+properties:
+  title: Companies
+  header:
+    theme: light
+layout:
+  contentJustify: center
+  contentGutter: 16
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+requests:
+  - _ref: pages/companies/requests/get_companies.yaml
+  - _ref: pages/companies/requests/update_company.yaml
+  - _ref: pages/companies/requests/add_company.yaml
+  - _ref: shared/selectors/companies_selector.yaml
+
+events:
+  onMount:
+    - id: get_companies
+      type: Request
+      params:
+        - companies_selector
+        - get_companies
+
+blocks:
+  - id: title
+    type: Title
+    properties:
+      level: 3
+      content: All Companies
+  - id: table
+    type: AgGridAlpine
+    layout:
+      span: 12
+    events:
+      onRowClick:
+        - id: set_company
+          type: SetState
+          params:
+            company:
+              _event: row
+    properties:
+      height: 600
+      enableCellTextSelection: true
+      rowData:
+        _request: get_companies
+      defaultColDef:
+        sortable: true
+        resizable: true
+        filter: true
+        filterParams:
+          buttons: ['reset']
+      columnDefs:
+        - headerName: Name
+          field: name
+        - headerName: Description
+          field: description
+        - headerName: Color
+          field: color
+          cellRenderer:
+            _function:
+              __nunjucks:
+                template: |
+                  <span style="margin-right: 12px; background: {{ color }}; width: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{{ color }}
+                on:
+                  __args: 0.data
+        - headerName: Created On
+          field: created.timestamp
+          width: 170
+          cellRenderer:
+            _function:
+              __nunjucks:
+                template: |
+                  {{ created | date('ddd, D MMM HH:mm') }}
+                on:
+                  created:
+                    __args: 0.data.created.timestamp
+        - headerName: Created By
+          field: created.user.name
+  - id: edit_box
+    type: Card
+    layout:
+      span: 12
+      contentGutter: 16
+    properties:
+      title: Edit Company
+    blocks:
+      - _ref: pages/companies/components/company_form.yaml
+      - id: add
+        type: Button
+        layout:
+          span: 12
+        properties:
+          title: Add Company
+          block: true
+          icon: AiOutlinePlusCircle
+          type: default
+        events:
+          onClick:
+            - id: validate
+              type: Validate
+            - id: save
+              type: Request
+              params: add_company
+            - id: reset
+              type: Reset
+            - id: get_companies
+              type: Request
+              params:
+                - companies_selector
+                - get_companies
+      - id: save
+        type: Button
+        layout:
+          span: 12
+        properties:
+          title: Update
+          block: true
+          icon: AiFillSave
+        events:
+          onClick:
+            - id: validate
+              type: Validate
+            - id: save
+              type: Request
+              params: update_company
+            - id: reset
+              type: Reset
+            - id: get_companies
+              type: Request
+              params:
+                - companies_selector
+                - get_companies

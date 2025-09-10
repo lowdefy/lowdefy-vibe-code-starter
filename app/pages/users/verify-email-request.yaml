@@ -1,0 +1,34 @@
+# @cascade: Lowdefy Page - Email Verification Request
+# AI Context: Simple verification message page with Result component
+# MCP Integration: Validate Layout and Result component schemas
+# Patterns: Layout > Content > Result component for status messages
+# Dependencies: NextAuth email verification flow, authentication system
+
+id: verify-email-request
+type: Layout
+properties:
+  title: Check Your Email
+  width: 500
+blocks:
+  - id: content
+    type: Content
+    layout:
+      contentJustify: center
+    style:
+      height: 100vh
+    blocks:
+      - id: login_card
+        type: Card
+        style:
+          marginTop: 64px
+          maxWidth: 578
+          '& > *':
+            boxShadow: '13px 13px 13px 0 rgba(0, 0, 0, 0.05)'
+        layout:
+          contentGutter: 16
+        blocks:
+          - id: check_email
+            type: Result
+            properties:
+              icon: AiOutlineMail
+              subTitle: A sign in link has been sent to your email. Follow the link to sign in.

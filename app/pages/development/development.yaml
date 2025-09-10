@@ -1,0 +1,86 @@
+# @cascade: Lowdefy Page - Development Tools Interface
+# AI Context: Development utilities and tools for testing Lowdefy components and patterns
+# MCP Integration: Validate PageHeaderMenu and development component schemas
+# Patterns: PageHeaderMenu > Content > development tools, component testing, pattern examples
+# Dependencies: Development-specific requests and components, testing utilities
+
+id: development
+type: PageHeaderMenu
+properties:
+  title: Development
+  header:
+    theme: light
+layout:
+  contentJustify: center
+  contentGutter: 16
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+requests:
+  - id: get_hello_world
+    type: HelloWorld
+    connectionId: hello_world_api
+    payload:
+      text:
+        _state: hello_world_text
+    properties:
+      text:
+        _payload: text
+      user_id:
+        _user: id
+
+blocks:
+  - id: title
+    type: Title
+    properties:
+      level: 3
+      content: Plugins Display
+  - id: hello_world_card
+    type: Card
+    layout:
+      contentGutter: 16
+      contentJustify: center
+    blocks:
+      - id: hello_world_text
+        type: TextInput
+        required: true
+        properties:
+          label:
+            disabled: true
+          placeholder: Enter something and click the button!
+      - id: hello_world_button
+        type: Button
+        layout:
+          flex: 0 1 auto
+        properties:
+          title: Hello World
+          type: primary
+          size: large
+        style:
+          marginRight: 10
+        events:
+          onClick:
+            - id: validate
+              type: Validate
+            - id: get_hello_world
+              type: Request
+              params: get_hello_world
+            - id: confetti
+              type: Confetti
+              params:
+                confettiRadius: 6
+                confettiNumber: 150
+                emojiSize: 40
+      - id: hello_world_alert
+        type: HelloWorldAlert
+        visible:
+          _ne:
+            - _request: get_hello_world.text
+            - null
+        properties:
+          description:
+            _request: get_hello_world.text

@@ -1,0 +1,40 @@
+# @cascade: Lowdefy Router - Application Navigation Logic
+# AI Context: Handle authentication routing, profile creation flow, default page routing
+# MCP Integration: Validate Layout block schema and Link action properties
+# Patterns: Switch-based routing logic, authentication checks, URL query preservation
+# Dependencies: login.yaml, profile-create.yaml, companies.yaml pages
+
+id: router
+type: Layout
+properties:
+  title: Lowdefy
+events:
+  onMount:
+    - id: router
+      type: Link
+      params:
+        _switch:
+          branches:
+            - if:
+                _eq:
+                  - _user: true
+                  - null
+              then: login
+            - if:
+                _not:
+                  _user: profile.profile_created
+              then: profile-create
+          default:
+            pageId: companies
+            urlQuery:
+              _url_query: true
+# Doing a Layout block with Header and Content stops flashing during loading
+blocks:
+  - id: header
+    type: Header
+    properties:
+      theme: light
+  - id: content
+    type: Content
+    style:
+      height: 100vh

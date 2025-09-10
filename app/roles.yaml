@@ -1,0 +1,7 @@
+# @cascade: Lowdefy Roles Configuration - User Role Definitions
+# AI Context: Define user roles and permissions for application access control
+# MCP Integration: Validate role configuration schema and permission structures
+# Patterns: Role-based access control, hierarchical permissions, consistent naming
+# Dependencies: Referenced by lowdefy.yaml auth configuration, user management pages
+
+- user-admin

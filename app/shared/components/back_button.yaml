@@ -1,0 +1,19 @@
+# @cascade: Lowdefy Shared Component - Back Button
+# AI Context: Reusable navigation button for returning to previous pages
+# MCP Integration: Validate Button component schema and navigation actions
+# Patterns: Consistent navigation, button styling, back functionality
+# Dependencies: Used across multiple pages, navigation system
+
+id: back_button
+type: Button
+properties:
+  icon: PiArrowLeft
+  type: default
+  size: large
+  hideTitle: true
+events:
+  onClick:
+    - id: link_back
+      type: Link
+      params:
+        back: true

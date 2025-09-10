@@ -1,0 +1,38 @@
+id: color_box
+type: Label
+layout:
+  contentGutter: 16
+properties:
+  title: Color
+blocks:
+  {% for color in colors %}
+  - id: color_{{ color }}
+    type: Avatar
+    layout:
+      flex: 0 0 auto
+    style:
+      _if:
+        test:
+          _eq:
+            - _state: user.profile.color
+            - "{{ color }}"
+        then:
+          '& > *':
+            boxShadow: '0 0 10px #1990FF'
+        else: {}
+    properties:
+      color: "{{ color }}"
+      size: 30
+    events:
+        onClick:
+          - id: set
+            type: SetState
+            params:
+              user.profile.color: "{{ color }}"
+
+  {% endfor %}
+  - id: user.profile.color
+    type: ColorSelector
+    properties:
+      label:
+        disabled: true

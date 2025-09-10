@@ -1,0 +1,25 @@
+# @cascade: MongoDB Request - Contacts Data Retrieval
+# AI Context: Aggregation pipeline with company lookup and field projection
+# MCP Integration: Validate MongoDBAggregation request schema and pipeline stages
+# Patterns: $lookup for relationships, field concatenation, sorting by timestamp
+# Dependencies: connections.yaml contacts collection, companies collection lookup
+
+id: get_contacts
+type: MongoDBAggregation
+connectionId: contacts
+properties:
+  pipeline:
+    - $project:
+        name:
+          $concat:
+            - $ifNull:
+                - $name
+                - ''
+            - ' '
+            - $ifNull:
+                - $surname
+                - ''
+        email: 1
+        contact_number: 1
+        mobile_number: 1
+        created: 1

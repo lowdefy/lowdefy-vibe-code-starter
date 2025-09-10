@@ -1,0 +1,114 @@
+# @cascade: Lowdefy Page - User Profile Display
+# AI Context: User profile information display with avatar and descriptions
+# MCP Integration: Validate PageHeaderMenu, Avatar, and Descriptions component schemas
+# Patterns: PageHeaderMenu > Content > user information display, profile management
+# Dependencies: User authentication system, profile data structure
+
+id: profile
+type: PageHeaderMenu
+properties:
+  title: Profile
+  header:
+    theme: light
+layout:
+  contentJustify: center
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+
+blocks:
+  - id: profile_card
+    type: Card
+    layout:
+      contentGutter: 16
+    style:
+      maxWidth: 800
+    areas:
+      cover:
+        blocks:
+          - _ref: shared/components/back_button.yaml
+    blocks:
+      - id: profile_title
+        type: Title
+        style:
+          textAlign: center
+        properties:
+          content: My Profile
+          level: 1
+      - id: left_section
+        type: Box
+        layout:
+          span: 8
+        style:
+          borderRight: '1px solid #D9D9D9'
+        blocks:
+          - id: user_avatar
+            type: Img
+            style:
+              textAlign: center
+              marginBottom: 42
+            properties:
+              style:
+                width: 100px
+                borderRadius: 50%
+              src:
+                _user: profile.picture
+          - id: edit_profile_button
+            type: Button
+            style:
+              '&:hover':
+                borderLeft: '4px solid #4484F1'
+              '& > *':
+                textAlign: left
+            properties:
+              title: Edit Profile
+              type: text
+              block: true
+            events:
+              onClick:
+                - id: edit_profile_link
+                  type: Link
+                  params: profile-edit
+          - id: logout_button
+            type: Button
+            style:
+              '&:hover':
+                borderLeft: '4px solid #4484F1'
+              '& > *':
+                textAlign: left
+            properties:
+              title: Logout
+              type: text
+              block: true
+            events:
+              onClick:
+                - id: logout
+                  type: Logout
+                  params:
+                    callbackUrl:
+                      pageId: router
+      - id: right_section
+        type: Box
+        layout:
+          span: 16
+        blocks:
+          - id: view_user_profile
+            type: Descriptions
+            style:
+              marginTop: 100px
+              padding: 48px
+            properties:
+              column: 1
+              colon: false
+              size: small
+              items:
+                - label: Name
+                  value:
+                    _user: profile.name
+                - label: Email
+                  value:
+                    _user: email

@@ -1,0 +1,69 @@
+# @cascade: MongoDB Request - User Invitation Creation
+# AI Context: User invitation with role assignment and profile setup
+# MCP Integration: Validate MongoDBUpdateOne request schema and upsert operations
+# Patterns: Upsert operations, role assignment, user invitation flow
+# Dependencies: connections.yaml users collection, role system, email validation
+
+id: create_invite
+type: MongoDBUpdateOne
+connectionId: user_contacts
+payload:
+  user:
+    _state: user
+  name:
+    _string.concat:
+      - _string.trim:
+          _if_none:
+            - _state: user.profile.given_name
+            - ''
+      - ' '
+      - _string.trim:
+          _if_none:
+            - _state: user.profile.family_name
+            - ''
+properties:
+  options:
+    upsert: true
+  filter:
+    lowercase_email:
+      _string.toLowerCase:
+        _string.trim:
+          _if_none:
+            - _payload: user.email
+            - ''
+    apps.lowdefy-vibe-code-starter.is_user:
+      $ne: true
+  update:
+    $set:
+      _id:
+        _uuid: true
+      email:
+        _string.trim:
+          _payload: user.email
+      lowercase_email:
+        _string.toLowerCase:
+          _string.trim:
+            _payload: user.email
+      apps.lowdefy-vibe-code-starter.roles:
+        _if_none:
+          - _payload: user.roles
+          - []
+      apps.lowdefy-vibe-code-starter.invite:
+        open: true
+      apps.lowdefy-vibe-code-starter.disabled: false
+      profile.name:
+        _payload: name
+      profile.given_name:
+        _string.trim:
+          _if_none:
+            - _payload: user.profile.given_name
+            - ''
+      profile.family_name:
+        _string.trim:
+          _if_none:
+            - _payload: user.profile.family_name
+            - ''
+      created:
+        _ref: shared/change_stamp.yaml
+      updated:
+        _ref: shared/change_stamp.yaml

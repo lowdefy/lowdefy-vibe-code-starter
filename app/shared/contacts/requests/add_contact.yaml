@@ -1,0 +1,20 @@
+id: add_contact
+type: MongoDBInsertOne
+connectionId: contacts
+payload:
+  contact:
+    _state: contact
+properties:
+  doc:
+    _object.assign:
+      - _payload: contact
+      - _id:
+          _ref: shared/utils/generate_short_id.yaml
+        created:
+          _ref: shared/change_stamp.yaml
+        email:
+          _string.toLowerCase:
+            _string.trim:
+              _if_none:
+                - _payload: contact.email
+                - ''

@@ -1,0 +1,8 @@
+# @cascade: Lowdefy Global Configuration - Application-wide Settings
+# AI Context: Define global state, theme settings, and app-wide configurations
+# MCP Integration: Validate global configuration schema and properties
+# Patterns: Global state management, consistent theming, shared variables
+# Dependencies: Referenced by all pages and components throughout the app
+
+colors:
+  primary: '#4484F1'

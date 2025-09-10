@@ -1,0 +1,10 @@
+id: companies_selector
+type: MongoDBAggregation
+connectionId: companies
+properties:
+  pipeline:
+    - $project:
+        label: $name
+        value: $_id
+    - $sort:
+        label: 1

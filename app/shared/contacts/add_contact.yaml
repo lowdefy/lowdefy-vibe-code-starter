@@ -1,0 +1,28 @@
+id: add_contact_modal
+type: Modal
+properties:
+  title: Add new contact
+  okText: Add
+layout:
+  contentGutter: 8
+events:
+  onOk:
+    - id: validate
+      type: Validate
+      params:
+        regex: ^contact
+    - id: add_contact
+      type: Request
+      params: add_contact
+    - id: refresh_data
+      type: Request
+      params:
+        _var: refresh_requests
+
+  onMount:
+    - id: get_companies_selector
+      type: Request
+      params: companies_selector
+
+blocks:
+  - _ref: shared/contacts/contact_form.yaml

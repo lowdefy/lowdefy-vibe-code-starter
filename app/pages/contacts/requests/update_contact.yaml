@@ -1,0 +1,34 @@
+# @cascade: MongoDB Request - Contact Update
+# AI Context: Update operation with change tracking and field validation
+# MCP Integration: Validate MongoDBUpdateOne request schema and update operations
+# Patterns: Document update with change stamp, field mapping from payload
+# Dependencies: connections.yaml contacts collection, shared/change_stamp.yaml
+
+id: update_contact
+type: MongoDBUpdateOne
+connectionId: contacts
+payload:
+  contact:
+    _state: contact
+properties:
+  filter:
+    _id:
+      _payload: contact._id
+  update:
+    - $addFields:
+        updated:
+          $concatArrays:
+            - - _ref: shared/change_stamp.yaml
+            - $ifNull:
+                - $updated
+                - []
+    - $set:
+        _object.assign:
+          - _payload: contact
+          - updated: $updated
+            email:
+              _string.toLowerCase:
+                _string.trim:
+                  _if_none:
+                    - _payload: contact.email
+                    - ''

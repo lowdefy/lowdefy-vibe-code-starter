@@ -1,0 +1,113 @@
+# @cascade: Lowdefy Page - User Authentication Login
+# AI Context: Authentication form with NextAuth integration, minimal styling
+# MCP Integration: Validate Layout and authentication component schemas
+# Patterns: Layout > Content > authentication forms, redirect handling
+# Dependencies: NextAuth configuration, authentication providers
+
+id: login
+type: Layout
+properties:
+  title: Login
+events:
+  onMount:
+    - id: logged_in_redirect
+      type: Link
+      skip:
+        _eq:
+          - _user: id
+          - null
+      params:
+        pageId: router
+    - id: set_error_message
+      type: SetState
+      skip:
+        _eq:
+          - _url_query: error
+          - null
+      params:
+        error_message: An error occurred while logging in.
+    - id: logout
+      type: Logout
+      skip:
+        _eq:
+          - _url_query: error
+          - null
+      params:
+        redirect: false
+
+blocks:
+  - id: content
+    type: Content
+    layout:
+      contentJustify: center
+    style:
+      height: 100vh
+    blocks:
+      - id: login_card
+        type: Card
+        style:
+          marginTop: 64px
+          maxWidth: 578
+          '& > *':
+            boxShadow: '13px 13px 13px 0 rgba(0, 0, 0, 0.05)'
+        layout:
+          contentGutter: 16
+        blocks:
+          - id: signin_box
+            type: Box
+            style:
+              padding: 32px 24px
+            layout:
+              contentGutter: 0
+            blocks:
+              - id: no_invite_alert
+                type: Alert
+                style:
+                  marginBottom: 16px
+                visible:
+                  _ne:
+                    - _state: error_message
+                    - null
+                properties:
+                  description:
+                    _state: error_message
+                  type: error
+                  showIcon: false
+              - id: sign_in_title
+                type: Html
+                properties:
+                  html: <p>Welcome. Please provide your email to sign in.</p>
+              - id: email
+                type: TextInput
+                required: true
+                validate:
+                  _ref:
+                    path: shared/validate_email.yaml
+                    vars:
+                      field_name: email
+                properties:
+                  title: Email
+                  label:
+                    disabled: true
+                  size: large
+                  placeholder: Email
+                  suffixIcon:
+                    name: AiOutlineMail
+                    color: '#888'
+                events:
+                  onPressEnter:
+                    _ref: pages/users/actions/login.yaml
+              - id: login_button
+                type: Button
+                style:
+                  marginTop: 24
+                properties:
+                  title: Login
+                  icon: AiOutlineLogin
+                  block: true
+                  size: large
+                  disabled:
+                    _state: login_button_disabled
+                events:
+                  onClick:
+                    _ref: pages/users/actions/login.yaml

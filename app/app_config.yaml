@@ -1,0 +1,7 @@
+# @cascade: Lowdefy App Config - Application Name Configuration
+# AI Context: Define application name for branding and identification
+# MCP Integration: Validate app configuration schema and naming conventions
+# Patterns: Consistent naming with project structure, kebab-case format
+# Dependencies: Referenced by build system and deployment configurations
+
+app_name: lowdefy-vibe-code-starter

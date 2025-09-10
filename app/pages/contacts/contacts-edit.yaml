@@ -1,0 +1,87 @@
+# @cascade: Lowdefy Page - Contact Edit Interface
+# AI Context: Edit form page with contact data loading and update functionality
+# MCP Integration: Validate PageHeaderMenu and form component schemas
+# Patterns: PageHeaderMenu > Content > form components, data loading on mount
+# Dependencies: requests/get_selected_contact.yaml, requests/update_contact.yaml, companies selector
+
+id: contacts-edit
+type: PageHeaderMenu
+properties:
+  title: Edit Contact
+  header:
+    theme: light
+layout:
+  contentJustify: center
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+
+requests:
+  - _ref: pages/contacts/requests/get_selected_contact.yaml
+  - _ref: pages/contacts/requests/update_contact.yaml
+  - _ref: shared/selectors/companies_selector.yaml
+
+events:
+  onMount:
+    - id: get_selected_contact
+      type: Request
+      params:
+        - get_selected_contact
+        - companies_selector
+    - id: set_state
+      type: SetState
+      params:
+        contact:
+          _request: get_selected_contact
+blocks:
+  - id: title
+    type: Card
+    properties:
+      title: Edit a Contact
+    layout:
+      contentGutter: 16
+    blocks:
+      - _ref: shared/contacts/contact_form.yaml
+      - id: back
+        type: Button
+        layout:
+          span: 12
+        properties:
+          title: Back
+          block: true
+          icon: AiOutlineLeft
+          type: default
+        events:
+          onClick:
+            - id: reset
+              type: Reset
+            - id: link
+              type: Link
+              params:
+                back: true
+
+      - id: save
+        type: Button
+        layout:
+          span: 12
+        properties:
+          title: Update
+          block: true
+          icon: AiFillSave
+        events:
+          onClick:
+            - id: validate
+              type: Validate
+            - id: save
+              type: Request
+              params: update_contact
+            - id: reset
+              type: Reset
+            - id: link
+              type: Link
+              params:
+                pageId: contacts

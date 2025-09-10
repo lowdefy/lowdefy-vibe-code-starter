@@ -1,0 +1,50 @@
+# @cascade: MongoDB Request - User Profile Creation
+# AI Context: Initial profile creation with avatar generation and user data setup
+# MCP Integration: Validate MongoDBUpdateOne request schema and profile operations
+# Patterns: Profile initialization, avatar URL generation, user data mapping
+# Dependencies: connections.yaml users collection, user authentication, avatar service
+
+id: create_profile
+type: MongoDBUpdateOne
+connectionId: user_contacts
+payload:
+  user:
+    _state: user
+  name:
+    _string.concat:
+      - _string.trim:
+          _if_none:
+            - _state: user.profile.given_name
+            - ''
+      - ' '
+      - _string.trim:
+          _if_none:
+            - _state: user.profile.family_name
+            - ''
+properties:
+  filter:
+    _id:
+      _user: id
+  update:
+    $set:
+      profile.profile_created: true
+      profile.picture:
+        _string.concat:
+          - https://api.dicebear.com/6.x/initials/svg?backgroundType=gradientLinear&scale=75&seed=
+          - _payload: name
+      profile.name:
+        _payload: name
+      profile.given_name:
+        _string.trim:
+          _if_none:
+            - _payload: user.profile.given_name
+            - ''
+      profile.family_name:
+        _string.trim:
+          _if_none:
+            - _payload: user.profile.family_name
+            - ''
+      profile.color:
+        _payload: user.profile.color
+      updated:
+        _ref: shared/change_stamp.yaml
