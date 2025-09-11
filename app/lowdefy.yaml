@@ -4,7 +4,7 @@
 # Patterns: name + lowdefy version + auth + pages + connections structure
 # Dependencies: pages/*.yaml, connections.yaml, auth provider configuration
 
-lowdefy: 0.0.0-experimental-20250218100608
+lowdefy: 0.0.0-experimental-20250911081238
 version: 0.0.0
 name: lowdefy-vibe-code-starter
 

@@ -76,7 +76,7 @@ The Lowdefy MCP server enables AI-assisted development through schema access and
 
 ### Setup Steps
 
-1. Start the Lowdefy development server: `pnpm dev` (runs on localhost:3000)
+1. Start the Lowdefy development server: `pnpm ldf:d` (runs on localhost:3000)
 2. Configure Windsurf MCP settings in your `mcp_config.json`:
 
     ```json
@@ -142,19 +142,23 @@ lowdefy-vibe-code-starter/
 
 ## 📋 Example Use Cases
 
-### 1. Component Generation
+### 1. Configure Windsurf Context
+
+Navigate to `.windsurf.rules/rules.md` and set the activation mode to "always on" so Windsurf always checks this for context when providing AI assistance.
+
+### 2. Component Generation
 
 Ask Cascade: "Create a user management page with a data table and form"
 
-### 2. Schema Validation
+### 3. Schema Validation
 
 Cascade validates configurations against Lowdefy schemas in real-time
 
-### 3. Pattern Application
+### 4. Pattern Application
 
 AI suggests and applies common Lowdefy patterns automatically
 
-### 4. Rapid Prototyping
+### 5. Rapid Prototyping
 
 Generate complete page structures with minimal input
 
