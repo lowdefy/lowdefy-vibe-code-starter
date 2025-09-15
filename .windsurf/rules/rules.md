@@ -15,7 +15,7 @@ trigger: always_on
 # File Organization
 
 - Use the following format for pages: pages/[page-name]/[page-name].yaml
-- Use the following format for requests: pages/[page-name]/actions/[action_name].yaml
+- Use the following format for actions: pages/[page-name]/actions/[action_name].yaml
 - Use the following format for components: pages/[page-name]/components/[component_name].yaml
 - Use the following format for requests: pages/[page-name]/requests/[request_name].yaml
 - Use the shared folder for files used in more than one place.

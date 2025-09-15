@@ -69,7 +69,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
 pnpm install
 
 # Start development server
-pnpm ldf:d
+pnpm lowdefy:dev
 ```
 
 ## 🤖 MCP Server Configuration
@@ -78,7 +78,7 @@ The Lowdefy MCP server enables AI-assisted development through schema access and
 
 ### Setup Steps
 
-1. Start the Lowdefy development server: `pnpm ldf:d` (runs on localhost:3000)
+1. Start the Lowdefy development server: `pnpm lowdefy:dev` (runs on localhost:3000)
 2. Configure Windsurf MCP settings in your `mcp_config.json`:
 
     ```json

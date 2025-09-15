@@ -5,10 +5,10 @@
   "private": true,
   "packageManager": "pnpm@8.15.4",
   "scripts": {
-    "ldf:b": "pnpm -r --workspace-root --filter='@lowdefy/lowdefy-vibe-code-starter' lowdefy build",
-    "ldf:d": "pnpm i && pnpm -r --workspace-root --filter='@lowdefy/lowdefy-vibe-code-starter' lowdefy dev --log-level=debug --no-open",
-    "ldf:s": "pnpm -r --workspace-root --filter='@lowdefy/lowdefy-vibe-code-starter' lowdefy start",
-    "ldf": "pnpm -r --workspace-root --filter='@lowdefy/lowdefy-vibe-code-starter' lowdefy dev --no-open"
+    "lowdefy:build": "pnpm -r --workspace-root --filter='@lowdefy/lowdefy-vibe-code-starter' lowdefy build",
+    "lowdefy:dev": "pnpm i && pnpm -r --workspace-root --filter='@lowdefy/lowdefy-vibe-code-starter' lowdefy dev --log-level=debug --no-open",
+    "lowdefy:start": "pnpm -r --workspace-root --filter='@lowdefy/lowdefy-vibe-code-starter' lowdefy start",
+    "lowdefy": "pnpm -r --workspace-root --filter='@lowdefy/lowdefy-vibe-code-starter' lowdefy dev --no-open"
   },
   "devDependencies": {
     "eslint": "8.16.0",
