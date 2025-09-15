@@ -55,6 +55,8 @@ trigger: always_on
 # Knowledge Base
 
 - Use the README.md file in the root directory for general information about the project.
+- Use the AI-CHANGELOG.md file to document changes made to the code.
 - Use the lowdefy MCP server for schema validation and debugging.
 - Use other similar files in the project for debugging and context.
 - Use lowdefy MCP server for debugging console errors.
+- Use the lowdefy MCP server to verify code suggestions.

@@ -36,6 +36,8 @@ This starter template showcases how AI can accelerate Lowdefy application develo
 
 ## 🚀 Quick Start
 
+> Tip: Before starting an AI-assisted session, prime the LLM with `AI-INIT-PROMPT.md` (see the "Example Use Cases" section below for details).
+
 ### Environment Setup
 
 Create a `.env` file in the `app/` folder with the following variables:
@@ -113,16 +115,21 @@ The Lowdefy MCP server enables AI-assisted development through schema access and
 
 ```
 lowdefy-vibe-code-starter/
-├── .cascade/
-│   └── context.md          # AI assistant context
+├── .windsurf/
+│   └── rules/
+│       └── rules.md            # AI assistance rules & conventions
 ├── app/
-│   ├── pages/              # Application pages
-│   ├── connections.yaml    # Database connections
-│   ├── lowdefy.yaml       # Main app configuration
-│   └── menus.yaml         # Navigation structure
-├── plugins/               # Custom Lowdefy plugins
+│   ├── pages/                  # Application pages
+│   ├── connections.yaml        # Database connections
+│   ├── lowdefy.yaml            # Main app configuration
+│   └── menus.yaml              # Navigation structure
+├── plugins/                    # Custom Lowdefy plugins
+├── AI-INIT-PROMPT.md           # Initialization prompt to prime AI context
+├── AI-CHANGELOG.md             # AI change log
 └── README.md
 ```
+
+> Note: This project uses `_ref` extensively to keep files modular and maintainable.
 
 ## 🧠 AI Integration Features
 
@@ -142,23 +149,32 @@ lowdefy-vibe-code-starter/
 
 ## 📋 Example Use Cases
 
-### 1. Configure Windsurf Context
+### 1. Prime AI Context (Recommended for a fresh chat)
+
+Before using Cascade in a new chat, open and send the contents of `AI-INIT-PROMPT.md` to the assistant to provide immediate context about this repo.
+
+- Open `AI-INIT-PROMPT.md` in the root of this project.
+- Start a fresh chat in Windsurf.
+- Paste or reference the file contents to the assistant to prime context.
+- Then proceed with other actions below.
+
+### 2. Configure Windsurf Context
 
 Navigate to `.windsurf.rules/rules.md` and set the activation mode to "always on" so Windsurf always checks this for context when providing AI assistance.
 
-### 2. Component Generation
+### 3. Component Generation
 
 Ask Cascade: "Create a project management page with a data table and form"
 
-### 3. Schema Validation
+### 4. Schema Validation
 
 Cascade validates configurations against Lowdefy schemas in real-time
 
-### 4. Pattern Application
+### 5. Pattern Application
 
 AI suggests and applies common Lowdefy patterns automatically
 
-### 5. Rapid Prototyping
+### 6. Rapid Prototyping
 
 Generate complete page structures with minimal input
 
@@ -175,6 +191,12 @@ Generate complete page structures with minimal input
 - **Contact Management**: Relationship handling with intelligent suggestions
 - **User Administration**: Authentication and profile management
 - **Event Logging**: Audit trail with AI-optimized queries
+
+## 🧩 Plugins
+
+- `@lowdefy/community-plugin-mongodb` for MongoDB connections and requests
+- `@lowdefy/community-plugin-nodemailer` for email provider integration
+- `@lowdefy/plugin-lowdefy-vibe-code-starter` (workspace) for demo components/actions
 
 ## 🤝 Contributing
 
