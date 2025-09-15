@@ -40,7 +40,7 @@ const HelloWorldAlertBlock = ({
       banner={properties.banner}
       closable={properties.closable}
       closeText={properties.closeText}
-      description={renderHtml({ html: `Hello World: ${properties.description}`, methods })}
+      description={renderHtml({ html: `Hello world,\n${properties.description}`, methods })}
       id={blockId}
       message={
         type.isNone(properties.message) ? (

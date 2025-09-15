@@ -1,1 +1,1 @@
-export { default as _ms } from './operators/ms.js';
+export { default as _hello_world } from './operators/hello_world.js';
