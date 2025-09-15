@@ -21,7 +21,7 @@ areas:
     blocks:
       - _ref: shared/users/user_avatar.yaml
 requests:
-  - _ref: shared/contacts/requests/add_contact.yaml
+  - _ref: shared/contacts/requests/insert_contact.yaml
   - _ref: pages/contacts/requests/get_contacts.yaml
   - _ref: shared/selectors/companies_selector.yaml
 events:
@@ -37,7 +37,7 @@ blocks:
     properties:
       level: 3
       content: All Contacts
-  - id: add_contact_btn
+  - id: insert_contact_btn
     type: Button
     layout:
       flex: 0 1 auto
@@ -49,7 +49,7 @@ blocks:
         - id: open_modal
           type: CallMethod
           params:
-            blockId: add_contact_modal
+            blockId: insert_contact_modal
             method: toggleOpen
   - id: table
     type: AgGridAlpine
@@ -96,8 +96,28 @@ blocks:
                     __args: 0.data.created.timestamp
         - headerName: Created By
           field: created.user.name
-
-  - _ref:
-      path: shared/contacts/add_contact.yaml
-      vars:
-        refresh_requests: get_contacts
+  - id: insert_contact_modal
+    type: Modal
+    properties:
+      title: Add new contact
+      okText: Add
+    layout:
+      contentGutter: 8
+    events:
+      onOk:
+        - id: validate
+          type: Validate
+          params:
+            regex: ^contact
+        - id: insert_contact
+          type: Request
+          params: insert_contact
+        - id: refresh_data
+          type: Request
+          params: get_contacts
+      onMount:
+        - id: get_companies_selector
+          type: Request
+          params: companies_selector
+    blocks:
+      - _ref: shared/contacts/contact_form.yaml

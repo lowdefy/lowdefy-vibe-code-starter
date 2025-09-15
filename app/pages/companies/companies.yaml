@@ -2,7 +2,7 @@
 # AI Context: Use AgGrid for data display, Card layouts for forms, responsive design
 # MCP Integration: Validate PageHeaderMenu, AgGrid, and form block schemas
 # Patterns: PageHeaderMenu > Content > AgGrid + form sections, CRUD operations
-# Dependencies: requests/get_companies.yaml, requests/add_company.yaml, connections.yaml
+# Dependencies: requests/get_companies.yaml, requests/insert_company.yaml, connections.yaml
 
 id: companies
 type: PageHeaderMenu
@@ -23,34 +23,45 @@ areas:
 requests:
   - _ref: pages/companies/requests/get_companies.yaml
   - _ref: pages/companies/requests/update_company.yaml
-  - _ref: pages/companies/requests/add_company.yaml
-  - _ref: shared/selectors/companies_selector.yaml
-
+  - _ref: pages/companies/requests/insert_company.yaml
 events:
   onMount:
     - id: get_companies
       type: Request
-      params:
-        - companies_selector
-        - get_companies
-
+      params: get_companies
 blocks:
   - id: title
     type: Title
+    layout:
+      flex: 1 0 auto
     properties:
       level: 3
       content: All Companies
+  - id: insert_company_btn
+    type: Button
+    layout:
+      flex: 0 1 auto
+    properties:
+      title: Add Company
+      icon: AiOutlinePlus
+    events:
+      onClick:
+        - id: open_modal
+          type: CallMethod
+          params:
+            blockId: insert_company_modal
+            method: toggleOpen
   - id: table
     type: AgGridAlpine
-    layout:
-      span: 12
     events:
       onRowClick:
-        - id: set_company
-          type: SetState
+        - id: link
+          type: Link
           params:
-            company:
-              _event: row
+            pageId: companies-edit
+            urlQuery:
+              id:
+                _event: row._id
     properties:
       height: 600
       enableCellTextSelection: true
@@ -67,6 +78,7 @@ blocks:
           field: name
         - headerName: Description
           field: description
+          flex: 1
         - headerName: Color
           field: color
           cellRenderer:
@@ -89,57 +101,24 @@ blocks:
                     __args: 0.data.created.timestamp
         - headerName: Created By
           field: created.user.name
-  - id: edit_box
-    type: Card
-    layout:
-      span: 12
-      contentGutter: 16
+  - id: insert_company_modal
+    type: Modal
     properties:
-      title: Edit Company
+      title: Add new company
+      okText: Add
+    layout:
+      contentGutter: 8
+    events:
+      onOk:
+        - id: validate
+          type: Validate
+          params:
+            regex: ^company
+        - id: insert_company
+          type: Request
+          params: insert_company
+        - id: refresh_data
+          type: Request
+          params: get_companies
     blocks:
       - _ref: pages/companies/components/company_form.yaml
-      - id: add
-        type: Button
-        layout:
-          span: 12
-        properties:
-          title: Add Company
-          block: true
-          icon: AiOutlinePlusCircle
-          type: default
-        events:
-          onClick:
-            - id: validate
-              type: Validate
-            - id: save
-              type: Request
-              params: add_company
-            - id: reset
-              type: Reset
-            - id: get_companies
-              type: Request
-              params:
-                - companies_selector
-                - get_companies
-      - id: save
-        type: Button
-        layout:
-          span: 12
-        properties:
-          title: Update
-          block: true
-          icon: AiFillSave
-        events:
-          onClick:
-            - id: validate
-              type: Validate
-            - id: save
-              type: Request
-              params: update_company
-            - id: reset
-              type: Reset
-            - id: get_companies
-              type: Request
-              params:
-                - companies_selector
-                - get_companies

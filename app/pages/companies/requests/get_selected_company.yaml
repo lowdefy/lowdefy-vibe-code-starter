@@ -1,0 +1,16 @@
+# @cascade: MongoDB Request - Selected Company Retrieval
+# AI Context: Single document retrieval by ID with company lookup
+# MCP Integration: Validate MongoDBFindOne request schema and lookup operations
+# Patterns: Document retrieval by ID, relationship population via lookup
+# Dependencies: connections.yaml companies collection, URL query parameters
+
+id: get_selected_company
+type: MongoDBFindOne
+connectionId: companies
+payload:
+  _id:
+    _url_query: id
+properties:
+  query:
+    _id:
+      _payload: _id

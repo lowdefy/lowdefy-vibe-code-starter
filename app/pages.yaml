@@ -8,6 +8,7 @@
 - _ref: pages/contacts/contacts-edit.yaml
 
 - _ref: pages/companies/companies.yaml
+- _ref: pages/companies/companies-edit.yaml
 
 - _ref: pages/development/development.yaml
 

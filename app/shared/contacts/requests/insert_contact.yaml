@@ -1,4 +1,10 @@
-id: add_contact
+# @cascade: MongoDB Request - Contact Creation
+# AI Context: Insert operation with UUID generation and change stamp
+# MCP Integration: Validate MongoDBInsertOne request schema and payload structure
+# Patterns: UUID generation, change stamp, consistent field mapping
+# Dependencies: connections.yaml contacts collection, shared/change_stamp.yaml
+
+id: insert_contact
 type: MongoDBInsertOne
 connectionId: contacts
 payload:

@@ -4,7 +4,7 @@
 # Patterns: UUID generation, change stamp, consistent field mapping
 # Dependencies: connections.yaml companies collection, shared/change_stamp.yaml
 
-id: add_company
+id: insert_company
 type: MongoDBInsertOne
 connectionId: companies
 payload:
