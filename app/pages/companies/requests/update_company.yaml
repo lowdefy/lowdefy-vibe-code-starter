@@ -1,4 +1,4 @@
-# @cascade: MongoDB Request - Company Update
+# @context: MongoDB Request - Company Update
 # AI Context: Update operation with aggregation pipeline and change tracking
 # MCP Integration: Validate MongoDBUpdateOne request schema and update operations
 # Patterns: Aggregation pipeline updates, change stamp tracking, field validation

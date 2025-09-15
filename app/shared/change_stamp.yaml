@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Shared Component - Change Stamp
+# @context: Lowdefy Shared Component - Change Stamp
 # AI Context: Reusable timestamp and user tracking for audit trails
 # MCP Integration: Validate shared component schema and timestamp operations
 # Patterns: Audit trail creation, user tracking, timestamp generation

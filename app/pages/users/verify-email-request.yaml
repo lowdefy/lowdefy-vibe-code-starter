@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - Email Verification Request
+# @context: Lowdefy Page - Email Verification Request
 # AI Context: Simple verification message page with Result component
 # MCP Integration: Validate Layout and Result component schemas
 # Patterns: Layout > Content > Result component for status messages

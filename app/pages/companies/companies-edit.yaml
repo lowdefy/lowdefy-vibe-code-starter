@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - Company Edit Interface
+# @context: Lowdefy Page - Company Edit Interface
 # AI Context: Edit form page with company data loading and update functionality
 # MCP Integration: Validate PageHeaderMenu and form component schemas
 # Patterns: PageHeaderMenu > Content > form components, data loading on mount

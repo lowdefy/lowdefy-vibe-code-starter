@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Component - Company Form
+# @context: Lowdefy Component - Company Form
 # AI Context: Reusable form component with TextInput, TextArea, and ColorSelector
 # MCP Integration: Validate form component schemas and input field properties
 # Patterns: Form layout with consistent field structure, validation patterns

@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - Companies Management Interface
+# @context: Lowdefy Page - Companies Management Interface
 # AI Context: Use AgGrid for data display, Card layouts for forms, responsive design
 # MCP Integration: Validate PageHeaderMenu, AgGrid, and form block schemas
 # Patterns: PageHeaderMenu > Content > AgGrid + form sections, CRUD operations

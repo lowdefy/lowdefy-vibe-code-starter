@@ -1,4 +1,4 @@
-# @cascade: MongoDB Request - Selected Company Retrieval
+# @context: MongoDB Request - Selected Company Retrieval
 # AI Context: Single document retrieval by ID with company lookup
 # MCP Integration: Validate MongoDBFindOne request schema and lookup operations
 # Patterns: Document retrieval by ID, relationship population via lookup

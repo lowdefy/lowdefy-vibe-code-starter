@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - User Profile Creation
+# @context: Lowdefy Page - User Profile Creation
 # AI Context: Initial profile setup form for new users
 # MCP Integration: Validate PageHeaderMenu and form component schemas
 # Patterns: PageHeaderMenu > Content > profile creation form, required fields

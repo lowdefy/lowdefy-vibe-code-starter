@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - User Management Interface
+# @context: Lowdefy Page - User Management Interface
 # AI Context: Use AgGrid for user data display, role management, user administration
 # MCP Integration: Validate PageHeaderMenu, AgGrid, and user management block schemas
 # Patterns: PageHeaderMenu > Content > AgGrid with user data, role assignments

@@ -1,4 +1,4 @@
-# @cascade: MongoDB Connections - Database Configuration
+# @context: MongoDB Connections - Database Configuration
 # AI Context: Include changeLog for audit trails, consistent naming patterns
 # MCP Integration: MongoDBCollection schema validation via MCP server
 # Patterns: collection + databaseUri + write permissions + changeLog metadata

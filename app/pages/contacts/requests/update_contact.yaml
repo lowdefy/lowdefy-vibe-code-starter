@@ -1,4 +1,4 @@
-# @cascade: MongoDB Request - Contact Update
+# @context: MongoDB Request - Contact Update
 # AI Context: Update operation with change tracking and field validation
 # MCP Integration: Validate MongoDBUpdateOne request schema and update operations
 # Patterns: Document update with change stamp, field mapping from payload

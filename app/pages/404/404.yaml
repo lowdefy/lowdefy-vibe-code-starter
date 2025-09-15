@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - 404 Error Page
+# @context: Lowdefy Page - 404 Error Page
 # AI Context: Simple error page with Result component, minimal layout
 # MCP Integration: Validate Layout and Result block schemas
 # Patterns: Layout > Content > Result component for error display

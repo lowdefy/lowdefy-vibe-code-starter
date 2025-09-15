@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Pages Configuration - Application Page References
+# @context: Lowdefy Pages Configuration - Application Page References
 # AI Context: Organize page references logically, group related functionality
 # MCP Integration: Validate page reference structure and file existence
 # Patterns: Group by feature area, maintain consistent naming, use _ref for modularity

@@ -1,4 +1,4 @@
-# @cascade: Lowdefy App Configuration - Main Application Setup
+# @context: Lowdefy App Configuration - Main Application Setup
 # AI Context: Configure auth, pages, connections for AI-assisted development
 # MCP Integration: Validate app structure and configuration schemas
 # Patterns: name + lowdefy version + auth + pages + connections structure

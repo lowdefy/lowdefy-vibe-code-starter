@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Component - User Profile Form
+# @context: Lowdefy Component - User Profile Form
 # AI Context: User profile form with name fields and color selector
 # MCP Integration: Validate form component schemas and input field properties
 # Patterns: Form layout with user data fields, consistent validation

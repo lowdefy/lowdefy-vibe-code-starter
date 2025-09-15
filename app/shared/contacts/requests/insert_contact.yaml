@@ -1,4 +1,4 @@
-# @cascade: MongoDB Request - Contact Creation
+# @context: MongoDB Request - Contact Creation
 # AI Context: Insert operation with UUID generation and change stamp
 # MCP Integration: Validate MongoDBInsertOne request schema and payload structure
 # Patterns: UUID generation, change stamp, consistent field mapping

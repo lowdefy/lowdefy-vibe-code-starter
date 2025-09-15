@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - User Profile Edit
+# @context: Lowdefy Page - User Profile Edit
 # AI Context: Profile editing form with existing data loading and update functionality
 # MCP Integration: Validate PageHeaderMenu and form component schemas
 # Patterns: PageHeaderMenu > Content > profile edit form, data pre-population

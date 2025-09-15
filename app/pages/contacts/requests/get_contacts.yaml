@@ -1,4 +1,4 @@
-# @cascade: MongoDB Request - Contacts Data Retrieval
+# @context: MongoDB Request - Contacts Data Retrieval
 # AI Context: Aggregation pipeline with company lookup and field projection
 # MCP Integration: Validate MongoDBAggregation request schema and pipeline stages
 # Patterns: $lookup for relationships, field concatenation, sorting by timestamp

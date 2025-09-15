@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - User Profile Display
+# @context: Lowdefy Page - User Profile Display
 # AI Context: User profile information display with avatar and descriptions
 # MCP Integration: Validate PageHeaderMenu, Avatar, and Descriptions component schemas
 # Patterns: PageHeaderMenu > Content > user information display, profile management

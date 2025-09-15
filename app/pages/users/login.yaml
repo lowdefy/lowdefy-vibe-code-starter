@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - User Authentication Login
+# @context: Lowdefy Page - User Authentication Login
 # AI Context: Authentication form with NextAuth integration, minimal styling
 # MCP Integration: Validate Layout and authentication component schemas
 # Patterns: Layout > Content > authentication forms, redirect handling

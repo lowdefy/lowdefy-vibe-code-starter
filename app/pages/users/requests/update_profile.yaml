@@ -1,4 +1,4 @@
-# @cascade: MongoDB Request - User Profile Update
+# @context: MongoDB Request - User Profile Update
 # AI Context: Update user profile with avatar regeneration and data validation
 # MCP Integration: Validate MongoDBUpdateOne request schema and update operations
 # Patterns: Profile updates, avatar URL generation, change tracking, field validation

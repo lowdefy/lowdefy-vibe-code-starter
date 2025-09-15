@@ -1,4 +1,4 @@
-# @cascade: MongoDB Request - User Profile Creation
+# @context: MongoDB Request - User Profile Creation
 # AI Context: Initial profile creation with avatar generation and user data setup
 # MCP Integration: Validate MongoDBUpdateOne request schema and profile operations
 # Patterns: Profile initialization, avatar URL generation, user data mapping

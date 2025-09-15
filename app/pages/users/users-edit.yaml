@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - User Administration Edit
+# @context: Lowdefy Page - User Administration Edit
 # AI Context: Admin interface for editing user details and role assignments
 # MCP Integration: Validate PageHeaderMenu and admin form component schemas
 # Patterns: PageHeaderMenu > Content > admin forms, role management, user data editing

@@ -148,7 +148,7 @@ Navigate to `.windsurf.rules/rules.md` and set the activation mode to "always on
 
 ### 2. Component Generation
 
-Ask Cascade: "Create a user management page with a data table and form"
+Ask Cascade: "Create a project management page with a data table and form"
 
 ### 3. Schema Validation
 

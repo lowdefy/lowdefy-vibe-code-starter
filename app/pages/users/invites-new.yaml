@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - User Invitations Management
+# @context: Lowdefy Page - User Invitations Management
 # AI Context: Form-based user invitation system with role assignment
 # MCP Integration: Validate PageHeaderMenu, form components, and user management schemas
 # Patterns: PageHeaderMenu > Content > form components, user role management

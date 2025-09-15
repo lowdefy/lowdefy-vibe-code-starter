@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Action - User Login
+# @context: Lowdefy Action - User Login
 # AI Context: Authentication action with NextAuth integration
 # MCP Integration: Validate action schema and authentication flow
 # Patterns: Authentication actions, redirect handling, error management

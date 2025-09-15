@@ -1,4 +1,4 @@
-# @cascade: MongoDB Request - User Administration Update
+# @context: MongoDB Request - User Administration Update
 # AI Context: Admin update of user details, roles, and status
 # MCP Integration: Validate MongoDBUpdateOne request schema and admin operations
 # Patterns: Admin user updates, role assignment, status management, field validation

@@ -1,4 +1,4 @@
-# @cascade: Lowdefy Page - Contacts Management Interface
+# @context: Lowdefy Page - Contacts Management Interface
 # AI Context: Use AgGrid for data display, Card layouts for forms, contact management CRUD
 # MCP Integration: Validate PageHeaderMenu, AgGrid, and form block schemas
 # Patterns: PageHeaderMenu > Content > AgGrid + form sections, relationship handling

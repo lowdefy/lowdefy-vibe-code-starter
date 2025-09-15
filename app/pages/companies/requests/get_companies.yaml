@@ -1,4 +1,4 @@
-# @cascade: MongoDB Request - Companies Data Retrieval
+# @context: MongoDB Request - Companies Data Retrieval
 # AI Context: Use aggregation pipelines, sort by created timestamp descending
 # MCP Integration: Validate MongoDBAggregation request schema and pipeline stages
 # Patterns: pipeline with $sort stage, consistent field projection
