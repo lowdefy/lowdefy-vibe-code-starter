@@ -40,14 +40,58 @@ This starter template showcases how AI can accelerate Lowdefy application develo
 
 ### Environment Setup
 
-Create a `.env` file in the `app/` folder with the following variables:
+1. **MongoDB Setup**
 
-```bash
-LOWDEFY_SECRET_MONGODB_URI={{YOUR_MONGODB_URI}}
-LOWDEFY_SECRET_SENDGRID_API_KEY={{YOUR_SENDGRID_API_KEY}}
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET={{YOUR_NEXTAUTH_SECRET}}
-```
+   - Sign up for a free MongoDB Atlas cluster at [https://www.mongodb.com/cloud/atlas/register](https://www.mongodb.com/cloud/atlas/register)
+   - Create a new project and build a free shared cluster
+   - Under "Security > Database Access", create a new database user with read/write access
+   - Go to "Network Access" and add your IP address (or 0.0.0.0/0 for development)
+   - In the "Database" section, click "Connect" and choose "Connect your application"
+   - Copy the connection string (it will look like `mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/`)
+
+2. **Email Service Setup**
+
+   Choose one of the suggested options below or any of the [supported providers](https://community.nodemailer.com/2-0-0-beta/setup-smtp/well-known-services/).
+
+   **Option 1: Mailgun**
+
+   - Sign up for a free Mailgun account at [https://signup.mailgun.com/](https://signup.mailgun.com/)
+   - Verify your domain or use the sandbox domain for testing
+   - Go to "Sending > Domain Settings" and find your SMTP credentials
+   - Copy your SMTP username and password
+   - Add your email as an authorized recipient
+
+   **Option 2: SendGrid**
+
+   - Sign up for a free SendGrid account at [https://signup.sendgrid.com/](https://signup.sendgrid.com/)
+   - Verify your sender identity (Single Sender Verification for testing)
+   - Go to "Settings > API Keys" and create a new API key with "Full Access"
+   - Copy the API key
+
+3. **Create Environment File**
+
+   Create a `.env` file in the `app/` folder with the following variables:
+
+   ```bash
+   # NextAuth
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=your-nextauth-secret-here
+
+   # MongoDB
+   LOWDEFY_SECRET_MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/lowdefy-vibe-code-starter?retryWrites=true&w=majority
+
+   # Sender email
+   LOWDEFY_SECRET_FROM_ADDRESS=no-reply@your-domain.com
+
+   # Choose one email provider configuration:
+
+   # For Mailgun
+   LOWDEFY_SECRET_MAILGUN_SMTP_USER=postmaster@your-domain.com
+   LOWDEFY_SECRET_MAILGUN_SMTP_PASSWORD=your-mailgun-smtp-password
+
+   # OR for SendGrid
+   LOWDEFY_SECRET_SENDGRID_API_KEY=SG.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   ```
 
 **Generate NextAuth Secret:**
 
@@ -65,6 +109,9 @@ node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
 ### Installation & Development
 
 ```bash
+# Change to the app directory
+cd app
+
 # Install dependencies
 pnpm install
 
@@ -110,6 +157,7 @@ The Lowdefy MCP server enables AI-assisted development through schema access and
 - `get_operator` - Get detailed schema for operators
 - `list_requests` - Get requests for specific connection types
 - `get_request` - Get detailed schema for specific requests
+- `execute_request` - Execute a request with the specified parameters
 
 ## 🏗️ Project Structure
 
@@ -185,18 +233,11 @@ Generate complete page structures with minimal input
 3. **Schema Validation**: MCP server ensures valid Lowdefy syntax
 4. **Iterative Refinement**: Collaborate with AI to perfect the implementation
 
-## 🎯 Key Features
-
-- **Companies Management**: CRUD operations with AI-generated forms
-- **Contact Management**: Relationship handling with intelligent suggestions
-- **User Administration**: Authentication and profile management
-- **Event Logging**: Audit trail with AI-optimized queries
-
 ## 🧩 Plugins
 
 - `@lowdefy/community-plugin-mongodb` for MongoDB connections and requests
 - `@lowdefy/community-plugin-nodemailer` for email provider integration
-- `@lowdefy/plugin-lowdefy-vibe-code-starter` (workspace) for demo components/actions
+- `@lowdefy/plugin-lowdefy-vibe-code-starter` workspace plugin for local integrations
 
 ## 🤝 Contributing
 
