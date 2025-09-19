@@ -1,6 +1,6 @@
 # Lowdefy Vibe Code Starter
 
-A Lowdefy application starter template designed for AI-assisted development with Cascade AI and the Lowdefy MCP server.
+A Lowdefy application starter template designed for AI-assisted development with AI Agents and the Lowdefy MCP server.
 
 ## 📖 Project Overview
 
@@ -29,7 +29,7 @@ This starter template demonstrates how AI can accelerate Lowdefy application dev
 
 This starter template showcases how AI can accelerate Lowdefy application development through:
 
-- **Cascade AI Integration**: Intelligent code generation and suggestions
+- **AI Agents Integration**: Intelligent code generation and suggestions
 - **Lowdefy MCP Server**: Real-time schema access and validation
 - **Smart Component Selection**: AI-powered block and action recommendations
 - **Pattern Recognition**: Automated application of best practices
@@ -119,7 +119,7 @@ pnpm install
 pnpm lowdefy:dev
 ```
 
-## 🤖 MCP Server Configuration
+## 🤖 MCP Server Configuration (Windsurf example)
 
 The Lowdefy MCP server enables AI-assisted development through schema access and validation.
 
@@ -165,15 +165,19 @@ The Lowdefy MCP server enables AI-assisted development through schema access and
 lowdefy-vibe-code-starter/
 ├── .windsurf/
 │   └── rules/
-│       └── rules.md            # AI assistance rules & conventions
+│       └── rules.md            # Windsurf AI Agent assistance rules & conventions
 ├── app/
 │   ├── pages/                  # Application pages
 │   ├── connections.yaml        # Database connections
 │   ├── lowdefy.yaml            # Main app configuration
 │   └── menus.yaml              # Navigation structure
 ├── plugins/                    # Custom Lowdefy plugins
-├── AI-INIT-PROMPT.md           # Initialization prompt to prime AI context
-├── AI-CHANGELOG.md             # AI change log
+├── context/                    # Context files
+│   ├──AGENTS-CHANGELOG.md      # Agents change log
+│   ├──AGENTS-CONTEXT.md        # Agents context
+│   ├──DATA-STRUCTURES.md       # Data structures
+├── AGENTS-PROMPT.md            # Initialization prompt to prime AI Agent context
+├── AGENTS.md                   # AI Agents assistance rules & conventions
 └── README.md
 ```
 
@@ -181,7 +185,7 @@ lowdefy-vibe-code-starter/
 
 ## 🧠 AI Integration Features
 
-### Cascade AI Assistant
+### AI Agent Assistant
 
 - Context-aware code generation
 - Intelligent component suggestions
@@ -199,37 +203,33 @@ lowdefy-vibe-code-starter/
 
 ### 1. Prime AI Context (Recommended for a fresh chat)
 
-Before using Cascade in a new chat, open and send the contents of `AI-INIT-PROMPT.md` to the assistant to provide immediate context about this repo.
+Before starting a new chat with the AI Agent, open and send the contents of `AGENTS-PROMPT.md` to the chat to provide immediate context about this repo.
 
-- Open `AI-INIT-PROMPT.md` in the root of this project.
+- Open `AGENTS-PROMPT.md` in the root of this project.
 - Start a fresh chat in Windsurf.
 - Paste or reference the file contents to the assistant to prime context.
 - Then proceed with other actions below.
 
-### 2. Configure Windsurf Context
+### 2. Component Generation
 
-Navigate to `.windsurf.rules/rules.md` and set the activation mode to "always on" so Windsurf always checks this for context when providing AI assistance.
+Ask AI Agent: "Create a project management page with a data table and form"
 
-### 3. Component Generation
+### 3. Schema Validation
 
-Ask Cascade: "Create a project management page with a data table and form"
+AI Agent validates configurations against Lowdefy schemas in real-time
 
-### 4. Schema Validation
+### 4. Pattern Application
 
-Cascade validates configurations against Lowdefy schemas in real-time
+AI Agent suggests and applies common Lowdefy patterns automatically
 
-### 5. Pattern Application
-
-AI suggests and applies common Lowdefy patterns automatically
-
-### 6. Rapid Prototyping
+### 5. Rapid Prototyping
 
 Generate complete page structures with minimal input
 
 ## 🔧 Development Workflow
 
-1. **Describe Intent**: Tell Cascade what you want to build
-2. **AI Generation**: Cascade generates appropriate YAML configurations
+1. **Describe Intent**: Tell the AI Agent what you want to build
+2. **AI Generation**: AI Agent generates appropriate YAML configurations
 3. **Schema Validation**: MCP server ensures valid Lowdefy syntax
 4. **Iterative Refinement**: Collaborate with AI to perfect the implementation
 

@@ -1,7 +1,3 @@
----
-trigger: always_on
----
-
 # App Configuration
 
 - Use lowdefy.yaml is for the app configuration.
