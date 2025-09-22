@@ -1,8 +1,7 @@
-# @context: Lowdefy Component - Contact Form
-# AI Context: Reusable form component with TextInput and Selector
-# MCP Integration: Validate form component schemas and input field properties
-# Patterns: Form layout with consistent field structure, validation patterns
-# Dependencies: Used by companies page, shared form validation patterns
+# @context
+# Name: Contact Form
+# Description: Reusable form component for contact data entry
+# Agents Context: Reusable form component with TextInput and Selector
 
 id: contact_form
 type: Box

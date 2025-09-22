@@ -1,8 +1,7 @@
-# @context: MongoDB Request - Single User Retrieval
-# AI Context: Retrieve specific user data with role and profile information
-# MCP Integration: Validate MongoDBAggregation request schema and projection
-# Patterns: User data retrieval, role projection, profile information access
-# Dependencies: connections.yaml users collection, role system, URL query parameters
+# @context
+# Name: User Retrieval Request
+# Description: MongoDB aggregation to fetch user data including profile, roles, and global attributes
+# Agents Context: Retrieves specific user for editing or display
 
 id: get_user
 type: MongoDBAggregation

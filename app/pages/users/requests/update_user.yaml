@@ -1,8 +1,7 @@
-# @context: MongoDB Request - User Administration Update
-# AI Context: Admin update of user details, roles, and status
-# MCP Integration: Validate MongoDBUpdateOne request schema and admin operations
-# Patterns: Admin user updates, role assignment, status management, field validation
-# Dependencies: connections.yaml users collection, role system, admin permissions
+# @context
+# Name: User Administration Update Request
+# Description: MongoDB request for admin to update user details, roles, and status
+# Agents Context: Admin operations with role management and field validation
 
 id: update_user
 type: MongoDBUpdateOne

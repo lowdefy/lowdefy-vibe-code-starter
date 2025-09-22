@@ -1,8 +1,7 @@
-# @context: MongoDB Connections - Database Configuration
-# AI Context: Include changeLog for audit trails, consistent naming patterns
-# MCP Integration: MongoDBCollection schema validation via MCP server
-# Patterns: collection + databaseUri + write permissions + changeLog metadata
-# Dependencies: Environment MONGODB_URI secret, log-changes collection
+# @context
+# Name: MongoDB Connections
+# Description: Database configuration for MongoDB collections and connections
+# Agents Context: Include changeLog for audit trails, consistent naming patterns
 
 - id: companies
   type: MongoDBCollection
@@ -47,18 +46,6 @@
       meta:
         user:
           _user: true
-- id: events
-  type: MongoDBCollection
-  properties:
-    collection: log-events
-    changeLog:
-      collection: log-changes
-      meta:
-        user:
-          _user: true
-    databaseUri:
-      _secret: MONGODB_URI
-    write: true
 - id: hello_world_api
   type: HelloWorldAPI
   properties:

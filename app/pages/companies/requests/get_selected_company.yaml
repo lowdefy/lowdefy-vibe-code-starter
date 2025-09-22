@@ -1,8 +1,7 @@
-# @context: MongoDB Request - Selected Company Retrieval
-# AI Context: Single document retrieval by ID with company lookup
-# MCP Integration: Validate MongoDBFindOne request schema and lookup operations
-# Patterns: Document retrieval by ID, relationship population via lookup
-# Dependencies: connections.yaml companies collection, URL query parameters
+# @context
+# Name: Selected Company Retrieval
+# Description: MongoDB request to fetch a single company document by ID from URL query
+# Agents Context: Used for company edit pages
 
 id: get_selected_company
 type: MongoDBFindOne

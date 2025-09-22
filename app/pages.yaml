@@ -1,8 +1,7 @@
-# @context: Lowdefy Pages Configuration - Application Page References
-# AI Context: Organize page references logically, group related functionality
-# MCP Integration: Validate page reference structure and file existence
-# Patterns: Group by feature area, maintain consistent naming, use _ref for modularity
-# Dependencies: All referenced .yaml files must exist in pages/ directory structure
+# @context
+# Name: Lowdefy Pages Configuration
+# Description: Application page references organized by feature areas
+# Agents Context: Organize page references logically, group related functionality
 
 - _ref: pages/contacts/contacts.yaml
 - _ref: pages/contacts/contacts-edit.yaml

@@ -1,3 +1,8 @@
+# @context
+# Name: User Avatar
+# Description: User profile link component with avatar and name
+# Agents Context: User profile link component with avatar and name
+
 id: user_profile_link
 type: Box
 layout:

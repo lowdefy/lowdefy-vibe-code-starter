@@ -1,8 +1,7 @@
-# @context: MongoDB Request - User Profile Update
-# AI Context: Update user profile with avatar regeneration and data validation
-# MCP Integration: Validate MongoDBUpdateOne request schema and update operations
-# Patterns: Profile updates, avatar URL generation, change tracking, field validation
-# Dependencies: connections.yaml users collection, avatar service, change stamp
+# @context
+# Name: User Profile Update Request
+# Description: MongoDB request to update user profile including name, avatar, and color
+# Agents Context: Uses DiceBear API for avatar generation, change stamp for audit
 
 id: update_profile
 type: MongoDBUpdateOne

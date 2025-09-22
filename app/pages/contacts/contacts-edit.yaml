@@ -1,8 +1,7 @@
-# @context: Lowdefy Page - Contact Edit Interface
-# AI Context: Edit form page with contact data loading and update functionality
-# MCP Integration: Validate PageHeaderMenu and form component schemas
-# Patterns: PageHeaderMenu > Content > form components, data loading on mount
-# Dependencies: requests/get_selected_contact.yaml, requests/update_contact.yaml, companies selector
+# @context
+# Name: Contact Edit Interface
+# Description: Lowdefy page for editing contact details
+# Agents Context: Edit form page with contact data loading and update functionality
 
 id: contacts-edit
 type: PageHeaderMenu

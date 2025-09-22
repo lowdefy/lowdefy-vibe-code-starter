@@ -1,8 +1,7 @@
-# @context: MongoDB Request - Company Creation
-# AI Context: Insert operation with UUID generation and change stamp
-# MCP Integration: Validate MongoDBInsertOne request schema and payload structure
-# Patterns: UUID generation, change stamp, consistent field mapping
-# Dependencies: connections.yaml companies collection, shared/change_stamp.yaml
+# @context
+# Name: Company Creation
+# Description: MongoDB request for creating new companies
+# Agents Context: Insert operation with UUID generation and change stamp
 
 id: insert_company
 type: MongoDBInsertOne

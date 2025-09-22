@@ -1,3 +1,8 @@
+# @context
+# Name: Companies Selector
+# Description: MongoDB request for companies selector options
+# Agents Context: MongoDB request for companies selector options
+
 id: companies_selector
 type: MongoDBAggregation
 connectionId: companies

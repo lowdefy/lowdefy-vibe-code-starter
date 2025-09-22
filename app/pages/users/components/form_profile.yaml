@@ -1,8 +1,7 @@
-# @context: Lowdefy Component - User Profile Form
-# AI Context: User profile form with name fields and color selector
-# MCP Integration: Validate form component schemas and input field properties
-# Patterns: Form layout with user data fields, consistent validation
-# Dependencies: Used by profile pages, user color selector component
+# @context
+# Name: User Profile Form
+# Description: User profile form with name fields and color selector
+# Agents Context: User profile form with name fields and color selector
 
 id: profile_form
 type: Box

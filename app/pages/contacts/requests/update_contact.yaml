@@ -1,8 +1,7 @@
-# @context: MongoDB Request - Contact Update
-# AI Context: Update operation with change tracking and field validation
-# MCP Integration: Validate MongoDBUpdateOne request schema and update operations
-# Patterns: Document update with change stamp, field mapping from payload
-# Dependencies: connections.yaml contacts collection, shared/change_stamp.yaml
+# @context
+# Name: Contact Update Request
+# Description: MongoDB request to update contact information with audit trail
+# Agents Context: Uses aggregation pipeline for change tracking
 
 id: update_contact
 type: MongoDBUpdateOne

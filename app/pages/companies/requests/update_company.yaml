@@ -1,8 +1,7 @@
-# @context: MongoDB Request - Company Update
-# AI Context: Update operation with aggregation pipeline and change tracking
-# MCP Integration: Validate MongoDBUpdateOne request schema and update operations
-# Patterns: Aggregation pipeline updates, change stamp tracking, field validation
-# Dependencies: connections.yaml companies collection, shared/change_stamp.yaml
+# @context
+# Name: Company Update
+# Description: MongoDB request for updating company information
+# Agents Context: Update operation with aggregation pipeline and change tracking
 
 id: update_company
 type: MongoDBUpdateOne

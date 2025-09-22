@@ -1,8 +1,7 @@
-# @context: MongoDB Request - Contact Creation
-# AI Context: Insert operation with UUID generation and change stamp
-# MCP Integration: Validate MongoDBInsertOne request schema and payload structure
-# Patterns: UUID generation, change stamp, consistent field mapping
-# Dependencies: connections.yaml contacts collection, shared/change_stamp.yaml
+# @context
+# Name: Contact Insertion Request
+# Description: MongoDB request to insert new contact with generated ID, timestamp, and email normalization
+# Agents Context: Uses shared utilities for ID generation and change tracking
 
 id: insert_contact
 type: MongoDBInsertOne

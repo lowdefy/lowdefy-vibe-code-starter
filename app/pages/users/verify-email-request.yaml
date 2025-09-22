@@ -1,8 +1,7 @@
-# @context: Lowdefy Page - Email Verification Request
-# AI Context: Simple verification message page with Result component
-# MCP Integration: Validate Layout and Result component schemas
-# Patterns: Layout > Content > Result component for status messages
-# Dependencies: NextAuth email verification flow, authentication system
+# @context
+# Name: Email Verification Request Page
+# Description: Lowdefy page displaying a result component with message to check email for sign-in link
+# Agents Context: Part of NextAuth email verification flow
 
 id: verify-email-request
 type: Layout

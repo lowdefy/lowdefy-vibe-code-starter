@@ -1,8 +1,7 @@
-# @context: Lowdefy Page - User Profile Display
-# AI Context: User profile information display with avatar and descriptions
-# MCP Integration: Validate PageHeaderMenu, Avatar, and Descriptions component schemas
-# Patterns: PageHeaderMenu > Content > user information display, profile management
-# Dependencies: User authentication system, profile data structure
+# @context
+# Name: User Profile Display
+# Description: Lowdefy page for displaying user profile information
+# Agents Context: User profile information display with avatar and descriptions
 
 id: profile
 type: PageHeaderMenu

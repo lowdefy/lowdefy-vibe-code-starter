@@ -1,8 +1,7 @@
-# @context: MongoDB Request - Users List Retrieval
-# AI Context: Retrieve all users with role and profile information for admin interface
-# MCP Integration: Validate MongoDBAggregation request schema and projection operations
-# Patterns: User list aggregation, role projection, status calculation, field mapping
-# Dependencies: connections.yaml users collection, role system, user administration
+# @context
+# Name: Users List Retrieval
+# Description: MongoDB request for retrieving users list with roles
+# Agents Context: Retrieve all users with role and profile information for admin interface
 
 id: get_users
 type: MongoDBAggregation

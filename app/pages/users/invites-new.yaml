@@ -1,8 +1,7 @@
-# @context: Lowdefy Page - User Invitations Management
-# AI Context: Form-based user invitation system with role assignment
-# MCP Integration: Validate PageHeaderMenu, form components, and user management schemas
-# Patterns: PageHeaderMenu > Content > form components, user role management
-# Dependencies: requests/create_invite.yaml, user authentication, role system
+# @context
+# Name: New User Invite Page
+# Description: Lowdefy page with form for creating user invitations including email, names, and roles
+# Agents Context: Uses create_invite request, form validation, and navigation
 
 id: invites-new
 type: PageHeaderMenu

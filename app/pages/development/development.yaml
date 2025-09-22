@@ -1,8 +1,7 @@
-# @context: Lowdefy Page - Development Tools Interface
-# AI Context: Development utilities and tools for testing Lowdefy components and patterns
-# MCP Integration: Validate PageHeaderMenu and development component schemas
-# Patterns: PageHeaderMenu > Content > development tools, component testing, pattern examples
-# Dependencies: Development-specific requests and components, testing utilities
+# @context
+# Name: Development Tools Page
+# Description: Lowdefy page for testing plugins and development tools
+# Agents Context: Demonstrates actions, connections, operators, blocks
 
 id: development
 type: PageHeaderMenu

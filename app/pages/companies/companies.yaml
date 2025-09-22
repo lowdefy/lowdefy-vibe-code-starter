@@ -1,8 +1,7 @@
-# @context: Lowdefy Page - Companies Management Interface
-# AI Context: Use AgGrid for data display, Card layouts for forms, responsive design
-# MCP Integration: Validate PageHeaderMenu, AgGrid, and form block schemas
-# Patterns: PageHeaderMenu > Content > AgGrid + form sections, CRUD operations
-# Dependencies: requests/get_companies.yaml, requests/insert_company.yaml, connections.yaml
+# @context
+# Name: Companies Management Interface
+# Description: Lowdefy page for managing companies with CRUD operations
+# Agents Context: Use AgGrid for data display, Card layouts for forms, responsive design
 
 id: companies
 type: PageHeaderMenu

@@ -1,8 +1,7 @@
-# @context: Lowdefy Page - 404 Error Page
-# AI Context: Simple error page with Result component, minimal layout
-# MCP Integration: Validate Layout and Result block schemas
-# Patterns: Layout > Content > Result component for error display
-# Dependencies: Standalone page, no external requests or components
+# @context
+# Name: 404 Error Page
+# Description: Lowdefy page for displaying 404 errors
+# Agents Context: Simple error page with Result component, minimal layout
 
 id: '404'
 type: Result

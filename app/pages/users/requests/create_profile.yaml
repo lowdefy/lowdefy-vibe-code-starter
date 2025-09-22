@@ -1,8 +1,7 @@
-# @context: MongoDB Request - User Profile Creation
-# AI Context: Initial profile creation with avatar generation and user data setup
-# MCP Integration: Validate MongoDBUpdateOne request schema and profile operations
-# Patterns: Profile initialization, avatar URL generation, user data mapping
-# Dependencies: connections.yaml users collection, user authentication, avatar service
+# @context
+# Name: User Profile Creation Request
+# Description: MongoDB request to initialize user profile with avatar and data
+# Agents Context: Sets profile_created flag, generates avatar
 
 id: create_profile
 type: MongoDBUpdateOne

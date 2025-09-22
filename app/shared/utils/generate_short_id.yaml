@@ -1,3 +1,8 @@
+# @context
+# Name: Generate Short ID
+# Description: Utility function to generate short random ID
+# Agents Context: Utility function to generate short random ID
+
 _js: |
   let result = "";
   for (let i = 0; i < 4; i++) {

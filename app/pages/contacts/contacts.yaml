@@ -1,8 +1,7 @@
-# @context: Lowdefy Page - Contacts Management Interface
-# AI Context: Use AgGrid for data display, Card layouts for forms, contact management CRUD
-# MCP Integration: Validate PageHeaderMenu, AgGrid, and form block schemas
-# Patterns: PageHeaderMenu > Content > AgGrid + form sections, relationship handling
-# Dependencies: requests/get_contacts.yaml, shared/contacts/, companies selector
+# @context
+# Name: Contacts Management Interface
+# Description: Lowdefy page for managing contacts with CRUD operations
+# Agents Context: Use AgGrid for data display, Card layouts for forms, contact management CRUD
 
 id: contacts
 type: PageHeaderMenu

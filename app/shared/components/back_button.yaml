@@ -1,8 +1,7 @@
-# @context: Lowdefy Shared Component - Back Button
-# AI Context: Reusable navigation button for returning to previous pages
-# MCP Integration: Validate Button component schema and navigation actions
-# Patterns: Consistent navigation, button styling, back functionality
-# Dependencies: Used across multiple pages, navigation system
+# @context
+# Name: Back Button
+# Description: Reusable navigation button for returning to previous pages
+# Agents Context: Reusable navigation button for returning to previous pages
 
 id: back_button
 type: Button

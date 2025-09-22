@@ -1,8 +1,7 @@
-# @context: Lowdefy Page - User Profile Edit
-# AI Context: Profile editing form with existing data loading and update functionality
-# MCP Integration: Validate PageHeaderMenu and form component schemas
-# Patterns: PageHeaderMenu > Content > profile edit form, data pre-population
-# Dependencies: requests/update_profile.yaml, user authentication, profile data
+# @context
+# Name: User Profile Edit Page
+# Description: Lowdefy page for editing user profile with form and update functionality
+# Agents Context: Loads existing profile data, uses update_profile request
 
 id: profile-edit
 type: PageHeaderMenu

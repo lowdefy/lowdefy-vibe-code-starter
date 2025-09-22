@@ -1,8 +1,7 @@
-# @context: MongoDB Request - User Invitation Creation
-# AI Context: User invitation with role assignment and profile setup
-# MCP Integration: Validate MongoDBUpdateOne request schema and upsert operations
-# Patterns: Upsert operations, role assignment, user invitation flow
-# Dependencies: connections.yaml users collection, role system, email validation
+# @context
+# Name: User Invite Creation Request
+# Description: MongoDB request to create or update user invitation with roles and profile
+# Agents Context: Upsert operation for invites, email normalization
 
 id: create_invite
 type: MongoDBUpdateOne

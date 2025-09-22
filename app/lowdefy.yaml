@@ -1,8 +1,7 @@
-# @context: Lowdefy App Configuration - Main Application Setup
-# AI Context: Configure auth, pages, connections for AI-assisted development
-# MCP Integration: Validate app structure and configuration schemas
-# Patterns: name + lowdefy version + auth + pages + connections structure
-# Dependencies: pages/*.yaml, connections.yaml, auth provider configuration
+# @context
+# Name: Lowdefy App Configuration
+# Description: Main application setup including auth, pages, connections, and plugins
+# Agents Context: Configure auth, pages, connections for AI-assisted development
 
 lowdefy: 0.0.0-experimental-20250915134255
 version: 0.0.0

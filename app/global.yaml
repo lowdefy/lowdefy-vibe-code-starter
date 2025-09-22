@@ -1,8 +1,7 @@
-# @context: Lowdefy Global Configuration - Application-wide Settings
-# AI Context: Define global state, theme settings, and app-wide configurations
-# MCP Integration: Validate global configuration schema and properties
-# Patterns: Global state management, consistent theming, shared variables
-# Dependencies: Referenced by all pages and components throughout the app
+# @context
+# Name: Lowdefy Global Configuration
+# Description: Application-wide settings including global state and theme configurations
+# Agents Context: Define global state, theme settings, and app-wide configurations
 
 colors:
   primary: '#4484F1'

@@ -1,8 +1,7 @@
-# @context: Lowdefy Page - User Administration Edit
-# AI Context: Admin interface for editing user details and role assignments
-# MCP Integration: Validate PageHeaderMenu and admin form component schemas
-# Patterns: PageHeaderMenu > Content > admin forms, role management, user data editing
-# Dependencies: requests/get_user.yaml, requests/update_user.yaml, role system
+# @context
+# Name: User Administration Edit
+# Description: Lowdefy page for admin editing of user details
+# Agents Context: Admin interface for editing user details and role assignments
 
 id: users-edit
 type: PageHeaderMenu

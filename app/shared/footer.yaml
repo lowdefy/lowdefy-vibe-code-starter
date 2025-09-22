@@ -1,3 +1,8 @@
+# @context
+# Name: Footer Component
+# Description: Shared footer component displaying Lowdefy attribution
+# Agents Context: Reusable footer for pages
+
 id: footer
 type: Paragraph
 properties:

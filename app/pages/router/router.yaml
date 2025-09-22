@@ -1,8 +1,7 @@
-# @context: Lowdefy Router - Application Navigation Logic
-# AI Context: Handle authentication routing, profile creation flow, default page routing
-# MCP Integration: Validate Layout block schema and Link action properties
-# Patterns: Switch-based routing logic, authentication checks, URL query preservation
-# Dependencies: login.yaml, profile-create.yaml, companies.yaml pages
+# @context
+# Name: Application Navigation Logic
+# Description: Lowdefy router handling authentication and page routing
+# Agents Context: Handle authentication routing, profile creation flow, default page routing
 
 id: router
 type: Layout
