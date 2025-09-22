@@ -29,11 +29,11 @@ blocks:
     required: true
     properties:
       title: Email
-  - id: contact.contact_number
+  - id: contact.work_phone
     type: TextInput
     properties:
-      title: Contact Number
-  - id: contact.mobile_number
+      title: Work Phone
+  - id: contact.mobile_phone
     type: TextInput
     properties:
-      title: Mobile Number
+      title: Mobile Phone

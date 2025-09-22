@@ -18,13 +18,6 @@ This starter template demonstrates how AI can accelerate Lowdefy application dev
 - **User Administration**: Authentication, profiles, and role management
 - **AI Integration**: Comprehensive MCP server integration for development assistance
 
-## 🎯 Target Audience
-
-- Developers learning AI-assisted low-code development
-- Teams wanting to accelerate Lowdefy application creation
-- Anyone interested in MCP server integration patterns
-- Educators teaching modern development workflows
-
 ## 🤖 AI-First Development
 
 This starter template showcases how AI can accelerate Lowdefy application development through:
@@ -36,7 +29,7 @@ This starter template showcases how AI can accelerate Lowdefy application develo
 
 ## 🚀 Quick Start
 
-> Tip: Before starting an AI-assisted session, prime the LLM with `AI-INIT-PROMPT.md` (see the "Example Use Cases" section below for details).
+> Tip: Before starting an AI-assisted session, prime the LLM with `AGENTS-PROMPT.md` (see the "Example Use Cases" section below for details).
 
 ### Environment Setup
 
@@ -176,6 +169,7 @@ lowdefy-vibe-code-starter/
 │   ├──AGENTS-CHANGELOG.md      # Agents change log
 │   ├──AGENTS-CONTEXT.md        # Agents context
 │   ├──DATA-STRUCTURES.md       # Data structures
+│   ├──LOWDEFY-CONTEXT.md       # Lowdefy context
 ├── AGENTS-PROMPT.md            # Initialization prompt to prime AI Agent context
 ├── AGENTS.md                   # AI Agents assistance rules & conventions
 └── README.md
@@ -248,7 +242,3 @@ This project serves as a reference for AI-assisted Lowdefy development. Contribu
 - [Lowdefy Documentation](https://docs.lowdefy.com)
 - [Cascade AI Assistant](https://windsurf.ai)
 - [MCP Protocol](https://modelcontextprotocol.io)
-
-## 🏷️ Tags
-
-`lowdefy` `ai-assisted-development` `mcp-server` `cascade-ai` `low-code` `yaml-configuration`

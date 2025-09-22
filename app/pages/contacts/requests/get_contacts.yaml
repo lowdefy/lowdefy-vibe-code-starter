@@ -19,6 +19,6 @@ properties:
                 - $surname
                 - ''
         email: 1
-        contact_number: 1
-        mobile_number: 1
+        work_phone: 1
+        mobile_phone: 1
         created: 1

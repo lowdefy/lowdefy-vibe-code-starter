@@ -260,6 +260,18 @@ events:
         args: [true]
 ```
 
+Note: The `Request` action `params` can be a single request ID or an array of request IDs for executing multiple requests in sequence:
+
+```yaml
+events:
+  onMount:
+    - id: load_data
+      type: Request
+      params:
+        - get_selected_item
+        - get_options
+```
+
 ## Data Flow
 
 ### Request-Response Pattern
@@ -272,9 +284,12 @@ blocks:
   - id: data_table
     type: AgGridAlpine
     properties:
-      rowData: _request: get_data
-      loading: _request: get_data.loading
-      error: _request: get_data.error
+      rowData:
+        _request: get_data
+      loading:
+        _request: get_data.loading
+      error:
+        _request: get_data.error
 ```
 
 ### Payload Handling
@@ -286,9 +301,12 @@ payload:
 
 properties:
   doc:
-    _id: _uuid: true
-    name: _payload: item.name
-    created: _ref: shared/change_stamp.yaml
+    _id:
+      _uuid: true
+    name:
+      _payload: item.name
+    created:
+      _ref: shared/change_stamp.yaml
 ```
 
 ## Authentication and Authorization
@@ -412,12 +430,14 @@ connections:
     type: MongoDBCollection
     properties:
       collection: items
-      databaseUri: _secret: MONGODB_URI
+      databaseUri:
+        _secret: MONGODB_URI
       write: true
       changeLog:
         collection: log-changes
         meta:
-          user: _user: true
+          user:
+            _user: true
 
 requests:
   - id: get_items
@@ -425,7 +445,8 @@ requests:
     connectionId: items
     properties:
       pipeline:
-        - $sort: { created: -1 }
+        - $sort:
+            created: -1
 ```
 
 ### Email Integration
@@ -439,9 +460,12 @@ auth:
         server:
           host: smtp.mailgun.org
           auth:
-            user: _secret: MAILGUN_SMTP_USER
-            pass: _secret: MAILGUN_SMTP_PASSWORD
-        from: _secret: FROM_ADDRESS
+            user:
+              _secret: MAILGUN_SMTP_USER
+            pass:
+              _secret: MAILGUN_SMTP_PASSWORD
+        from:
+          _secret: FROM_ADDRESS
 ```
 
 ## Debugging and Development

@@ -78,10 +78,10 @@ blocks:
         - headerName: Email
           field: email
           flex: 1
-        - headerName: Contact Number
-          field: contact_number
-        - headerName: Mobile Number
-          field: mobile_number
+        - headerName: Work Phone
+          field: work_phone
+        - headerName: Mobile Phone
+          field: mobile_phone
         - headerName: Created On
           field: created.timestamp
           width: 170
