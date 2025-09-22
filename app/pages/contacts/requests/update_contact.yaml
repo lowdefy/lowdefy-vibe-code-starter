@@ -1,0 +1,33 @@
+# @context
+# Name: Contact Update Request
+# Description: MongoDB request to update contact information with audit trail
+# Agents Context: Uses aggregation pipeline for change tracking
+
+id: update_contact
+type: MongoDBUpdateOne
+connectionId: contacts
+payload:
+  contact:
+    _state: contact
+properties:
+  filter:
+    _id:
+      _payload: contact._id
+  update:
+    - $addFields:
+        updated:
+          $concatArrays:
+            - - _ref: shared/change_stamp.yaml
+            - $ifNull:
+                - $updated
+                - []
+    - $set:
+        _object.assign:
+          - _payload: contact
+          - updated: $updated
+            email:
+              _string.toLowerCase:
+                _string.trim:
+                  _if_none:
+                    - _payload: contact.email
+                    - ''

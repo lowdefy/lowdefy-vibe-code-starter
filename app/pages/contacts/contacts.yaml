@@ -1,0 +1,122 @@
+# @context
+# Name: Contacts Management Interface
+# Description: Lowdefy page for managing contacts with CRUD operations
+# Agents Context: Use AgGrid for data display, Card layouts for forms, contact management CRUD
+
+id: contacts
+type: PageHeaderMenu
+properties:
+  title: Contacts
+  header:
+    theme: light
+layout:
+  contentGutter: 16
+  contentJustify: center
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+requests:
+  - _ref: shared/contacts/requests/insert_contact.yaml
+  - _ref: pages/contacts/requests/get_contacts.yaml
+  - _ref: shared/selectors/companies_selector.yaml
+events:
+  onMount:
+    - id: get_contacts
+      type: Request
+      params: get_contacts
+blocks:
+  - id: title
+    type: Title
+    layout:
+      flex: 1 0 auto
+    properties:
+      level: 3
+      content: All Contacts
+  - id: insert_contact_btn
+    type: Button
+    layout:
+      flex: 0 1 auto
+    properties:
+      title: Add Contact
+      icon: AiOutlinePlus
+    events:
+      onClick:
+        - id: open_modal
+          type: CallMethod
+          params:
+            blockId: insert_contact_modal
+            method: toggleOpen
+  - id: table
+    type: AgGridAlpine
+    events:
+      onRowClick:
+        - id: link
+          type: Link
+          params:
+            pageId: contacts-edit
+            urlQuery:
+              id:
+                _event: row._id
+    properties:
+      height: 600
+      enableCellTextSelection: true
+      rowData:
+        _request: get_contacts
+      defaultColDef:
+        sortable: true
+        resizable: true
+        filter: true
+        filterParams:
+          buttons: ['reset']
+      columnDefs:
+        - headerName: Name
+          field: name
+        - headerName: Email
+          field: email
+          flex: 1
+        - headerName: Work Phone
+          field: work_phone
+        - headerName: Mobile Phone
+          field: mobile_phone
+        - headerName: Created On
+          field: created.timestamp
+          width: 170
+          cellRenderer:
+            _function:
+              __nunjucks:
+                template: |
+                  {{ created | date('ddd, D MMM HH:mm') }}
+                on:
+                  created:
+                    __args: 0.data.created.timestamp
+        - headerName: Created By
+          field: created.user.name
+  - id: insert_contact_modal
+    type: Modal
+    properties:
+      title: Add new contact
+      okText: Add
+    layout:
+      contentGutter: 8
+    events:
+      onOk:
+        - id: validate
+          type: Validate
+          params:
+            regex: ^contact
+        - id: insert_contact
+          type: Request
+          params: insert_contact
+        - id: refresh_data
+          type: Request
+          params: get_contacts
+      onMount:
+        - id: get_companies_selector
+          type: Request
+          params: companies_selector
+    blocks:
+      - _ref: shared/contacts/contact_form.yaml

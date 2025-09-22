@@ -1,0 +1,80 @@
+# @context
+# Name: User Profile Edit Page
+# Description: Lowdefy page for editing user profile with form and update functionality
+# Agents Context: Loads existing profile data, uses update_profile request
+
+id: profile-edit
+type: PageHeaderMenu
+properties:
+  title: Edit Profile
+  header:
+    theme: light
+layout:
+  contentJustify: center
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+
+events:
+  onInit:
+    - id: init
+      type: SetState
+      params:
+        user.profile:
+          _user: profile
+        user.gh_username:
+          _user: global_attributes.github.username
+requests:
+  - _ref: pages/users/requests/update_profile.yaml
+
+blocks:
+  - id: edit_profile_card
+    type: Card
+    layout:
+      contentGutter: 16
+    style:
+      maxWidth: 800
+    areas:
+      cover:
+        blocks:
+          - _ref: shared/components/back_button.yaml
+    blocks:
+      - id: profile_title
+        type: Title
+        style:
+          textAlign: center
+        properties:
+          content: Edit Profile
+          level: 1
+      - _ref: pages/users/components/form_profile.yaml
+      - id: footer_buttons_box
+        type: Box
+        layout:
+          contentDirection: row-reverse
+        blocks:
+          - id: edit_profile_button
+            type: Button
+            layout:
+              flex: 0 1 auto
+            properties:
+              title: Save
+              icon: AiOutlineSave
+            events:
+              onClick:
+                - id: update_profile_mongodb
+                  type: Request
+                  params: update_profile
+                # Not working due to bug as lowdefy context does not update for other pages than this one
+                # - id: update_user_session
+                #   type: UpdateSession
+                - id: link_to_profile
+                  type: Link
+                  params:
+                    url:
+                      _string.concat:
+                        - _location: origin
+                        - /profile

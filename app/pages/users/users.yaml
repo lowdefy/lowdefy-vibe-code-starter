@@ -1,0 +1,104 @@
+# @context
+# Name: User Management Interface
+# Description: Lowdefy page for managing users with role assignments and administration
+# Agents Context: Use AgGrid for user data display, role management, user administration
+
+id: users
+type: PageHeaderMenu
+properties:
+  title: Users
+  header:
+    theme: light
+layout:
+  contentJustify: center
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+
+events:
+  onMountAsync:
+    - id: get_users
+      type: Request
+      params: get_users
+
+requests:
+  - _ref: pages/users/requests/get_users.yaml
+blocks:
+  - id: max_width_box
+    type: Box
+    layout:
+      size: 1200
+      contentGutter: 8
+    blocks:
+      - id: title
+        type: Title
+        layout:
+          flex: 1 1 auto
+        properties:
+          content: Users
+          level: 1
+      - id: invites_button
+        type: Button
+        layout:
+          flex: 0 1 auto
+        properties:
+          title: User Invites
+          icon: AiOutlinePlus
+        events:
+          onClick:
+            - id: link_to_invites
+              type: Link
+              params: invites-new
+      - id: content_card
+        type: Card
+        blocks:
+          - id: users_table
+            type: AgGridAlpine
+            properties:
+              rowData:
+                _request: get_users
+              defaultColDef:
+                sortable: true
+                resizable: true
+                filter: true
+              columnDefs:
+                - headerName: Name
+                  field: profile.name
+                  cellRenderer:
+                    _function:
+                      __nunjucks:
+                        template: |
+                          <img src="{{ image }}" width="30px" hight="30px" style="margin-right: 5px; border-radius: 50%;"/> {{ profile.name }}
+                        on:
+                          __args: 0.data
+                - headerName: Email
+                  field: email
+                  flex: 1
+                - headerName: Roles
+                  field: roles
+                  width: 200
+                - headerName: Active
+                  field: active
+                  width: 100
+                - headerName: Created at
+                  field: created_at
+                  width: 150
+                - headerName: Updated at
+                  field: updated_at
+                  width: 150
+                - headerName: Signed up
+                  field: signed_up
+                  width: 150
+            events:
+              onRowClick:
+                - id: link_to_edit
+                  type: Link
+                  params:
+                    pageId: users-edit
+                    input:
+                      user_id:
+                        _event: row._id

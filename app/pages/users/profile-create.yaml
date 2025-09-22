@@ -1,0 +1,74 @@
+# @context
+# Name: User Profile Creation Page
+# Description: Lowdefy page for initial user profile setup with form components
+# Agents Context: On mount sets user profile state, uses create_profile request
+
+id: profile-create
+type: PageHeaderMenu
+properties:
+  title: Create Profile
+  header:
+    theme: light
+layout:
+  contentJustify: center
+
+events:
+  onMount:
+    - id: init
+      type: SetState
+      params:
+        user.profile:
+          _user: profile
+requests:
+  - _ref: pages/users/requests/create_profile.yaml
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+blocks:
+  - id: create_profile_card
+    type: Card
+    layout:
+      contentGutter: 16
+    style:
+      maxWidth: 800
+    blocks:
+      - id: create_profile_title
+        type: Title
+        style:
+          textAlign: center
+        properties:
+          content: Create Profile
+          level: 1
+      - _ref: pages/users/components/form_profile.yaml
+      - id: footer_buttons_box
+        type: Box
+        layout:
+          contentDirection: row-reverse
+        blocks:
+          - id: save_button
+            type: Button
+            layout:
+              flex: 0 1 auto
+            properties:
+              title: Save
+              icon: AiOutlineSave
+            events:
+              onClick:
+                - id: validate
+                  type: Validate
+                  params:
+                    regex: ^user\.
+                - id: create_profile
+                  type: Request
+                  params: create_profile
+                - id: update_session
+                  type: UpdateSession
+                - id: link
+                  type: Link
+                  params:
+                    # TODO: UpdateSession not updating next page bug
+                    url:
+                      _string.concat:
+                        - _location: origin
+                        - /router

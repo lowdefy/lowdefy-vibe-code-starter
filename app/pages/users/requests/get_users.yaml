@@ -1,0 +1,38 @@
+# @context
+# Name: Users List Retrieval
+# Description: MongoDB request for retrieving users list with roles
+# Agents Context: Retrieve all users with role and profile information for admin interface
+
+id: get_users
+type: MongoDBAggregation
+connectionId: user_contacts
+properties:
+  pipeline:
+    - $project:
+        email: 1
+        image: 1
+        profile: 1
+        app_attributes: $apps.lowdefy-vibe-code-starter.app_attributes
+        roles: $apps.lowdefy-vibe-code-starter.roles
+        active:
+          $cond:
+            - $disabled
+            - ⛔️
+            - ✅
+        created_at:
+          $dateToString:
+            date: $created.timestamp
+            format: '%Y/%m/%d'
+        updated_at:
+          $dateToString:
+            date: $updated.timestamp
+            format: '%Y/%m/%d'
+        signed_up:
+          $cond:
+            - $eq:
+                - $type: $apps.lowdefy-vibe-code-starter.sign_up
+                - date
+            - ✅
+            - ⛔️
+    - $sort:
+        email: 1

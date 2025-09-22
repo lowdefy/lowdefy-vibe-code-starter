@@ -1,0 +1,24 @@
+# @context
+# Name: Contacts Data Retrieval
+# Description: MongoDB aggregation to retrieve contacts with name concatenation
+# Agents Context: Projects contact fields for display
+
+id: get_contacts
+type: MongoDBAggregation
+connectionId: contacts
+properties:
+  pipeline:
+    - $project:
+        name:
+          $concat:
+            - $ifNull:
+                - $name
+                - ''
+            - ' '
+            - $ifNull:
+                - $surname
+                - ''
+        email: 1
+        work_phone: 1
+        mobile_phone: 1
+        created: 1

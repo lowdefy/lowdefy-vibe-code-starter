@@ -1,0 +1,84 @@
+# @context
+# Name: Company Edit Interface
+# Description: Lowdefy page for editing company details
+# Agents Context: Edit form page with company data loading and update functionality
+
+id: companies-edit
+type: PageHeaderMenu
+properties:
+  title: Edit Company
+  header:
+    theme: light
+layout:
+  contentJustify: center
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+
+requests:
+  - _ref: pages/companies/requests/get_selected_company.yaml
+  - _ref: pages/companies/requests/update_company.yaml
+  - _ref: shared/selectors/companies_selector.yaml
+
+events:
+  onMount:
+    - id: get_selected_company
+      type: Request
+      params: get_selected_company
+    - id: set_state
+      type: SetState
+      params:
+        company:
+          _request: get_selected_company
+blocks:
+  - id: title
+    type: Card
+    properties:
+      title: Edit a Company
+    layout:
+      contentGutter: 16
+    blocks:
+      - _ref: pages/companies/components/company_form.yaml
+      - id: back
+        type: Button
+        layout:
+          span: 12
+        properties:
+          title: Back
+          block: true
+          icon: AiOutlineLeft
+          type: default
+        events:
+          onClick:
+            - id: reset
+              type: Reset
+            - id: link
+              type: Link
+              params:
+                back: true
+
+      - id: save
+        type: Button
+        layout:
+          span: 12
+        properties:
+          title: Update
+          block: true
+          icon: AiFillSave
+        events:
+          onClick:
+            - id: validate
+              type: Validate
+            - id: save
+              type: Request
+              params: update_company
+            - id: reset
+              type: Reset
+            - id: link
+              type: Link
+              params:
+                pageId: companies

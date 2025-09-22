@@ -1,0 +1,12 @@
+# @context
+# Name: Companies Data Retrieval
+# Description: MongoDB request for retrieving companies data
+# Agents Context: Use aggregation pipelines, sort by created timestamp descending
+
+id: get_companies
+type: MongoDBAggregation
+connectionId: companies
+properties:
+  pipeline:
+    - $sort:
+        created.timestamp: -1

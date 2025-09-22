@@ -1,0 +1,31 @@
+# @context
+# Name: Company Update
+# Description: MongoDB request for updating company information
+# Agents Context: Update operation with aggregation pipeline and change tracking
+
+id: update_company
+type: MongoDBUpdateOne
+connectionId: companies
+payload:
+  company:
+    _state: company
+properties:
+  filter:
+    _id:
+      _payload: company._id
+  update:
+    - $addFields:
+        updated:
+          $concatArrays:
+            - - _ref: shared/change_stamp.yaml
+            - $ifNull:
+                - $updated
+                - []
+    - $set:
+        name:
+          _payload: company.name
+        description:
+          _payload: company.description
+        color:
+          _payload: company.color
+        updated: $updated

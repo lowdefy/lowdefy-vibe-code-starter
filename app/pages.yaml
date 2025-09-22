@@ -1,0 +1,24 @@
+# @context
+# Name: Lowdefy Pages Configuration
+# Description: Application page references organized by feature areas
+# Agents Context: Organize page references logically, group related functionality
+
+- _ref: pages/contacts/contacts.yaml
+- _ref: pages/contacts/contacts-edit.yaml
+
+- _ref: pages/companies/companies.yaml
+- _ref: pages/companies/companies-edit.yaml
+
+- _ref: pages/development/development.yaml
+
+- _ref: pages/router/router.yaml
+
+- _ref: pages/users/login.yaml
+- _ref: pages/users/profile.yaml
+- _ref: pages/users/profile-create.yaml
+- _ref: pages/users/profile-edit.yaml
+- _ref: pages/users/users.yaml
+- _ref: pages/users/users-edit.yaml
+- _ref: pages/users/invites-new.yaml
+- _ref: pages/users/verify-email-request.yaml
+- _ref: pages/404/404.yaml

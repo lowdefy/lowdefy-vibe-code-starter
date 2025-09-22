@@ -1,0 +1,11 @@
+# @context
+# Name: Footer Component
+# Description: Shared footer component displaying Lowdefy attribution
+# Agents Context: Reusable footer for pages
+
+id: footer
+type: Paragraph
+properties:
+  type: secondary
+  content: |
+    <a href='https://lowdefy.com/'>Created by Lowdefy</a>

@@ -1,0 +1,12 @@
+# @context
+# Name: Change Stamp
+# Description: Utility object for audit trails with current timestamp and user information
+# Agents Context: Reusable for tracking changes in CRUD operations
+
+timestamp:
+  _date: now
+user:
+  name:
+    _user: profile.name
+  id:
+    _user: id

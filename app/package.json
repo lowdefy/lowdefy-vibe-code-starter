@@ -1,0 +1,16 @@
+{
+  "name": "@lowdefy/lowdefy-vibe-code-starter",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lowdefy:build": "lowdefy build",
+    "lowdefy:dev": "lowdefy dev --log-level=debug --no-open",
+    "lowdefy:start": "lowdefy start",
+    "lowdefy": "lowdefy dev --no-open"
+  },
+  "dependencies": {
+    "lowdefy": "4.3.0"
+  }
+}

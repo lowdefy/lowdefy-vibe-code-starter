@@ -1,0 +1,98 @@
+# @context
+# Name: Lowdefy App Configuration
+# Description: Main application setup including auth, pages, connections, and plugins
+# Agents Context: Configure auth, pages, connections for AI-assisted development
+
+lowdefy: 0.0.0-experimental-20250915134255
+version: 0.0.0
+name: lowdefy-vibe-code-starter
+
+cli:
+  disableTelemetry: true
+plugins:
+  - name: '@lowdefy/community-plugin-mongodb'
+    version: '2.3.0'
+  - name: '@lowdefy/community-plugin-nodemailer'
+    version: '1.1.4'
+  - name: '@lowdefy/plugin-lowdefy-vibe-code-starter'
+    version: 'workspace:*'
+
+config:
+  homePageId: router
+
+auth:
+  authPages:
+    signIn: '/login'
+    verifyRequest: '/verify-email-request'
+    error: '/login'
+  adapter:
+    id: mdb_adapter
+    type: MultiAppMongoDBAdapter
+    properties:
+      # invite:
+      #   required: true
+      databaseUri:
+        _secret: MONGODB_URI
+      appName:
+        _ref:
+          path: app_config.yaml
+          key: app_name
+      verificationTokens:
+        uses: 5
+
+  providers:
+    - id: email
+      type: EmailProvider
+      properties:
+        maxAge: 1800
+        server: # Mailgun config
+          host: smtp.mailgun.org
+          port: 587
+          auth:
+            user:
+              _secret: MAILGUN_SMTP_USER
+            pass:
+              _secret: MAILGUN_SMTP_PASSWORD
+        # server: # SendGrid config
+        #   host: smtp.sendgrid.net
+        #   port: 465
+        #   auth:
+        #     user: apikey
+        #     pass:
+        #       _secret: SENDGRID_API_KEY
+        from:
+          _secret: FROM_ADDRESS
+        templateVariables:
+          appName: Lowdefy Vibe Code Starter
+          logoHeight: 52px
+  userFields:
+    id: user.id
+    profile: user.profile
+    app_attributes: user.app_attributes
+    global_attributes: user.global_attributes
+    roles: user.roles
+  pages:
+    protected: true
+    public:
+      - login
+      - logged-out
+      - verify-email-request
+      - '404'
+      - router
+    roles:
+      user-admin:
+        - users
+        - invites-new
+        - users-edit
+
+global:
+  _ref: global.yaml
+
+menus:
+  _ref: menus.yaml
+
+connections:
+  _ref: connections.yaml
+
+pages:
+  _ref: pages.yaml

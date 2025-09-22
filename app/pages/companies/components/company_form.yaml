@@ -1,0 +1,25 @@
+# @context
+# Name: Company Form
+# Description: Reusable form component for company data entry
+# Agents Context: Reusable form component with TextInput, TextArea, and ColorSelector
+
+id: company_form
+type: Box
+layout:
+  contentGutter: 8
+blocks:
+  - id: company.name
+    type: TextInput
+    required: true
+    properties:
+      title: Name
+  - id: company.description
+    type: TextArea
+    properties:
+      title: Description
+      placeholder: Write a short overview for the company...
+  - id: company.color
+    type: ColorSelector
+    required: true
+    properties:
+      title: Color

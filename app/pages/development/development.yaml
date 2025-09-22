@@ -1,0 +1,154 @@
+# @context
+# Name: Development Tools Page
+# Description: Lowdefy page for testing plugins and development tools
+# Agents Context: Demonstrates actions, connections, operators, blocks
+
+id: development
+type: PageHeaderMenu
+properties:
+  title: Development
+  header:
+    theme: light
+layout:
+  contentJustify: center
+  contentGutter: 16
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+requests:
+  - id: get_hello_world
+    type: HelloWorld
+    connectionId: hello_world_api
+    payload:
+      text:
+        _state: hello_world_text
+    properties:
+      text:
+        _payload: text
+      user_id:
+        _user: id
+
+blocks:
+  - id: title
+    type: Title
+    properties:
+      level: 3
+      content: Plugins Display
+  - id: hello_world_card
+    type: Card
+    layout:
+      contentGutter: 16
+      contentJustify: center
+    blocks:
+      - id: hello_world_text
+        type: TextInput
+        required: true
+        properties:
+          label:
+            disabled: true
+          placeholder: Enter something and click the buttons!
+      - id: confetti_action_button
+        type: Button
+        layout:
+          flex: 0 1 auto
+        properties:
+          title: Confetti Action
+          type: primary
+          size: large
+        style:
+          marginRight: 10
+        events:
+          onClick:
+            - id: confetti
+              type: Confetti
+              params:
+                confettiRadius: 6
+                confettiNumber: 150
+                emojiSize: 40
+      - id: hello_world_alert_button
+        type: Button
+        layout:
+          flex: 0 1 auto
+        properties:
+          title: Hello World Alert
+          type: primary
+          size: large
+        style:
+          marginRight: 10
+        events:
+          onClick:
+            - id: validate
+              type: Validate
+            - id: set_show_alert
+              type: SetState
+              params:
+                show_alert: true
+            - id: confetti
+              type: Confetti
+              params:
+                confettiRadius: 6
+                confettiNumber: 150
+                emojiSize: 40
+      - id: hello_world_connection_button
+        type: Button
+        layout:
+          flex: 0 1 auto
+        properties:
+          title: Hello World Connection
+          type: primary
+          size: large
+        style:
+          marginRight: 10
+        events:
+          onClick:
+            - id: validate
+              type: Validate
+            - id: get_hello_world
+              type: Request
+              params: get_hello_world
+            - id: confetti
+              type: Confetti
+              messages:
+                success:
+                  _request: get_hello_world.text
+              params:
+                confettiRadius: 6
+                confettiNumber: 150
+                emojiSize: 40
+      - id: hello_world_operator_button
+        type: Button
+        layout:
+          flex: 0 1 auto
+        properties:
+          title: Hello World Operator
+          type: primary
+          size: large
+        style:
+          marginRight: 10
+        events:
+          onClick:
+            - id: validate
+              type: Validate
+            - id: confetti
+              type: Confetti
+              messages:
+                success:
+                  _hello_world:
+                    _state: hello_world_text
+              params:
+                confettiRadius: 6
+                confettiNumber: 150
+                emojiSize: 40
+      - id: hello_world_alert
+        type: HelloWorldAlert
+        visible:
+          _eq:
+            - _state: show_alert
+            - true
+        properties:
+          description:
+            _state: hello_world_text

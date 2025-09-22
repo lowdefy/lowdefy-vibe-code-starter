@@ -1,0 +1,110 @@
+# @context
+# Name: User Administration Edit
+# Description: Lowdefy page for admin editing of user details
+# Agents Context: Admin interface for editing user details and role assignments
+
+id: users-edit
+type: PageHeaderMenu
+properties:
+  title: Edit User
+  header:
+    theme: light
+layout:
+  contentJustify: center
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+
+events:
+  onMount:
+    - id: redirect
+      type: Link
+      skip:
+        _ne:
+          - _input: user_id
+          - null
+      params: users
+    - id: get_user
+      type: Request
+      skip:
+        _eq:
+          - _input: user_id
+          - null
+      params: get_user
+    - id: set_user
+      type: SetState
+      skip:
+        _eq:
+          - _input: user_id
+          - null
+      params:
+        user:
+          _request: get_user.0
+
+requests:
+  - _ref: pages/users/requests/get_user.yaml
+  - _ref: pages/users/requests/update_user.yaml
+
+blocks:
+  - id: edit_user_card
+    type: Card
+    layout:
+      contentGutter: 16
+    style:
+      maxWidth: 800
+    areas:
+      cover:
+        blocks:
+          - _ref: shared/components/back_button.yaml
+    blocks:
+      - id: edit_user_title
+        type: Title
+        style:
+          textAlign: center
+        properties:
+          content: Edit User
+          level: 1
+      - _ref: pages/users/components/form_profile.yaml
+      - id: divider
+        type: Divider
+        properties:
+          title: Access Settings
+      - id: user.roles
+        type: MultipleSelector
+        properties:
+          title: Roles
+          options:
+            _ref: roles.yaml
+      - id: user.disabled
+        type: Switch
+        properties:
+          title: Disabled
+          color: '#f5222d'
+      - id: footer_buttons_box
+        type: Box
+        layout:
+          contentDirection: row-reverse
+        blocks:
+          - id: edit_user_button
+            type: Button
+            layout:
+              span: 12
+            properties:
+              title: Save
+              icon: AiOutlineSave
+              block: true
+            events:
+              onClick:
+                - id: update_user
+                  type: Request
+                  params:
+                    - update_user
+                - id: reset
+                  type: Reset
+                - id: return_to_users
+                  type: Link
+                  params: users

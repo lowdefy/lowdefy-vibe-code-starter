@@ -1,0 +1,22 @@
+# @context
+# Name: User Retrieval Request
+# Description: MongoDB aggregation to fetch user data including profile, roles, and global attributes
+# Agents Context: Retrieves specific user for editing or display
+
+id: get_user
+type: MongoDBAggregation
+connectionId: user_contacts
+payload:
+  user_id:
+    _input: user_id
+properties:
+  pipeline:
+    - $match:
+        _id:
+          _payload: user_id
+    - $project:
+        email: 1
+        profile: 1
+        disabled: 1
+        roles: $apps.lowdefy-vibe-code-starter.roles
+        gh_username: $global_attributes.github.username

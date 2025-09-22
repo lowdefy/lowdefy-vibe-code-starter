@@ -1,0 +1,15 @@
+# @context
+# Name: Selected Contact Retrieval
+# Description: MongoDB request to fetch a single contact document by ID
+# Agents Context: Used for contact edit pages
+
+id: get_selected_contact
+type: MongoDBFindOne
+connectionId: contacts
+payload:
+  _id:
+    _url_query: id
+properties:
+  query:
+    _id:
+      _payload: _id

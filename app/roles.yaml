@@ -1,0 +1,6 @@
+# @context
+# Name: Lowdefy Roles Configuration
+# Description: User role definitions for application access control
+# Agents Context: Define user roles and permissions for application access control
+
+- user-admin

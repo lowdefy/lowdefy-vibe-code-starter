@@ -1,0 +1,123 @@
+# @context
+# Name: Companies Management Interface
+# Description: Lowdefy page for managing companies with CRUD operations
+# Agents Context: Use AgGrid for data display, Card layouts for forms, responsive design
+
+id: companies
+type: PageHeaderMenu
+properties:
+  title: Companies
+  header:
+    theme: light
+layout:
+  contentJustify: center
+  contentGutter: 16
+areas:
+  footer:
+    blocks:
+      - _ref: shared/footer.yaml
+  header:
+    blocks:
+      - _ref: shared/users/user_avatar.yaml
+requests:
+  - _ref: pages/companies/requests/get_companies.yaml
+  - _ref: pages/companies/requests/update_company.yaml
+  - _ref: pages/companies/requests/insert_company.yaml
+events:
+  onMount:
+    - id: get_companies
+      type: Request
+      params: get_companies
+blocks:
+  - id: title
+    type: Title
+    layout:
+      flex: 1 0 auto
+    properties:
+      level: 3
+      content: All Companies
+  - id: insert_company_btn
+    type: Button
+    layout:
+      flex: 0 1 auto
+    properties:
+      title: Add Company
+      icon: AiOutlinePlus
+    events:
+      onClick:
+        - id: open_modal
+          type: CallMethod
+          params:
+            blockId: insert_company_modal
+            method: toggleOpen
+  - id: table
+    type: AgGridAlpine
+    events:
+      onRowClick:
+        - id: link
+          type: Link
+          params:
+            pageId: companies-edit
+            urlQuery:
+              id:
+                _event: row._id
+    properties:
+      height: 600
+      enableCellTextSelection: true
+      rowData:
+        _request: get_companies
+      defaultColDef:
+        sortable: true
+        resizable: true
+        filter: true
+        filterParams:
+          buttons: ['reset']
+      columnDefs:
+        - headerName: Name
+          field: name
+        - headerName: Description
+          field: description
+          flex: 1
+        - headerName: Color
+          field: color
+          cellRenderer:
+            _function:
+              __nunjucks:
+                template: |
+                  <span style="margin-right: 12px; background: {{ color }}; width: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{{ color }}
+                on:
+                  __args: 0.data
+        - headerName: Created On
+          field: created.timestamp
+          width: 170
+          cellRenderer:
+            _function:
+              __nunjucks:
+                template: |
+                  {{ created | date('ddd, D MMM HH:mm') }}
+                on:
+                  created:
+                    __args: 0.data.created.timestamp
+        - headerName: Created By
+          field: created.user.name
+  - id: insert_company_modal
+    type: Modal
+    properties:
+      title: Add new company
+      okText: Add
+    layout:
+      contentGutter: 8
+    events:
+      onOk:
+        - id: validate
+          type: Validate
+          params:
+            regex: ^company
+        - id: insert_company
+          type: Request
+          params: insert_company
+        - id: refresh_data
+          type: Request
+          params: get_companies
+    blocks:
+      - _ref: pages/companies/components/company_form.yaml

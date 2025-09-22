@@ -1,0 +1,15 @@
+# @context
+# Name: Selected Company Retrieval
+# Description: MongoDB request to fetch a single company document by ID from URL query
+# Agents Context: Used for company edit pages
+
+id: get_selected_company
+type: MongoDBFindOne
+connectionId: companies
+payload:
+  _id:
+    _url_query: id
+properties:
+  query:
+    _id:
+      _payload: _id

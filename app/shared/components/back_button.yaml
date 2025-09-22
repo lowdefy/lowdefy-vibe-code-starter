@@ -1,0 +1,18 @@
+# @context
+# Name: Back Button
+# Description: Reusable navigation button for returning to previous pages
+# Agents Context: Reusable navigation button for returning to previous pages
+
+id: back_button
+type: Button
+properties:
+  icon: PiArrowLeft
+  type: default
+  size: large
+  hideTitle: true
+events:
+  onClick:
+    - id: link_back
+      type: Link
+      params:
+        back: true

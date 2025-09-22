@@ -1,0 +1,23 @@
+# @context
+# Name: Company Creation
+# Description: MongoDB request for creating new companies
+# Agents Context: Insert operation with UUID generation and change stamp
+
+id: insert_company
+type: MongoDBInsertOne
+connectionId: companies
+payload:
+  company:
+    _state: company
+properties:
+  doc:
+    _id:
+      _uuid: true
+    created:
+      _ref: shared/change_stamp.yaml
+    name:
+      _payload: company.name
+    description:
+      _payload: company.description
+    color:
+      _payload: company.color

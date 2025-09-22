@@ -1,0 +1,40 @@
+{
+  "name": "@lowdefy/plugin-lowdefy-vibe-code-starter",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./*": "./dist/*",
+    "./blocks": "./dist/blocks.js",
+    "./types": "./dist/types.js",
+    "./operators/client": "./dist/operators.js",
+    "./operators/server": "./dist/operators.js"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "swc src --out-dir dist --config-file ./.swcrc --delete-dir-on-start --copy-files",
+    "clean": "rm -rf dist",
+    "prepare": "pnpm build"
+  },
+  "dependencies": {
+    "@lowdefy/helpers": "~4.2.2",
+    "@lowdefy/block-utils": "~4.2.2",
+    "@lowdefy/operators": "~4.2.2",
+    "antd": "4.22.5",
+    "axios": "1.3.4",
+    "mongodb": "6.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "js-confetti": "0.10.2",
+    "ms": "2.1.3",
+    "uuid": "9.0.0"
+  },
+  "devDependencies": {
+    "@swc/cli": "0.1.57",
+    "@swc/core": "1.2.194",
+    "swc-loader": "0.2.2"
+  }
+}

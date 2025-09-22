@@ -1,0 +1,23 @@
+# @context
+# Name: User Login Actions
+# Description: Sequence of actions for user authentication including validation, login, and UI state management
+# Agents Context: NextAuth integration for email login, state management for button disable/enable, error handling
+
+- id: set_login_button_disabled
+  type: SetState
+  params:
+    login_button_disabled: true
+- id: validate
+  type: Validate
+- id: login
+  type: Login
+  params:
+    providerId: email
+    email:
+      _state: email
+    callbackUrl:
+      pageId: router
+- id: set_login_button_enabled
+  type: SetState
+  params:
+    login_button_disabled: false

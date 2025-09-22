@@ -1,0 +1,6 @@
+# @context
+# Name: Lowdefy App Config
+# Description: Application name configuration for branding and identification
+# Agents Context: Define application name for branding and identification
+
+app_name: lowdefy-vibe-code-starter

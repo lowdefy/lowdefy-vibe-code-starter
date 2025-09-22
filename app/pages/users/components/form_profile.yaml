@@ -1,0 +1,45 @@
+# @context
+# Name: User Profile Form
+# Description: User profile form with name fields and color selector
+# Agents Context: User profile form with name fields and color selector
+
+id: profile_form
+type: Box
+layout:
+  contentGutter: 16
+
+blocks:
+  - id: user.profile.given_name
+    type: TextInput
+    required: Please provide your first name.
+    layout:
+      span: 12
+    properties:
+      title: First Name
+  - id: user.profile.family_name
+    type: TextInput
+    required: Please provide your last name.
+    layout:
+      span: 12
+    properties:
+      title: Last Name
+
+  - _ref:
+      path: pages/users/components/user_color_selector.yaml.njk
+      vars:
+        colors:
+          - '#f44336'
+          - '#e91e63'
+          - '#9c27b0'
+          - '#673ab7'
+          - '#3f51b5'
+          - '#2196f3'
+          - '#03a9f4'
+          - '#00bcd4'
+          - '#009688'
+          - '#4caf50'
+          - '#8bc34a'
+          - '#cddc39'
+          - '#ffc107'
+          - '#ff9800'
+          - '#ff5722'

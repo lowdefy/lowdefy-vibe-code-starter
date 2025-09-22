@@ -1,0 +1,33 @@
+# @context
+# Name: Email Verification Request Page
+# Description: Lowdefy page displaying a result component with message to check email for sign-in link
+# Agents Context: Part of NextAuth email verification flow
+
+id: verify-email-request
+type: Layout
+properties:
+  title: Check Your Email
+  width: 500
+blocks:
+  - id: content
+    type: Content
+    layout:
+      contentJustify: center
+    style:
+      height: 100vh
+    blocks:
+      - id: login_card
+        type: Card
+        style:
+          marginTop: 64px
+          maxWidth: 578
+          '& > *':
+            boxShadow: '13px 13px 13px 0 rgba(0, 0, 0, 0.05)'
+        layout:
+          contentGutter: 16
+        blocks:
+          - id: check_email
+            type: Result
+            properties:
+              icon: AiOutlineMail
+              subTitle: A sign in link has been sent to your email. Follow the link to sign in.
